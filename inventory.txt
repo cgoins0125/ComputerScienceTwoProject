@@ -1,0 +1,8 @@
+ItemId,ItemName,Quantity,CostExpenditure,SalePrice,
+1,carrot,9876,9.0,15.0,
+2,banana,9783,5.0,6.0,
+3,flour,3924,2.0,6.0,
+5,hot dogs,7000,3.0,10.0,
+6,oranges,6000,5.0,10.0,
+7,peanuts,20000,2.0,2.0,
+8,cereal,200,10.0,15.0,
