@@ -13,6 +13,8 @@ import java.awt.event.FocusListener;
 import java.util.InputMismatchException;
 
 public class AddStockWindow implements ActionListener {
+
+    private JFrame addStockFrame;
     private JPanel rootPanel;
     private JTextField itemNameTextField;
     private JTextField quantityTextField;
@@ -21,14 +23,26 @@ public class AddStockWindow implements ActionListener {
     private JButton addStockButton;
     private CSVWriter writer;
 
-    public AddStockWindow() {
+    public AddStockWindow(Point p) {
         writer = new CSVWriter();
         createFocusListeners();
         createActionListeners();
+        addStockFrame = new JFrame();
+        createWindowListener();
+        addStockFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        addStockFrame.setLocationRelativeTo(null);
+        addStockFrame.setContentPane(rootPanel);
+        addStockFrame.pack();
+        addStockFrame.setVisible(true);
     }
 
-    public JPanel getRootPanel() {
-        return rootPanel;
+    private void createWindowListener() {
+        addStockFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                StockPage sp = new StockPage(new Point(425,225));
+            }
+        });
     }
 
     //Focus listeners are for when text boxes are clicked on
@@ -87,7 +101,6 @@ public class AddStockWindow implements ActionListener {
     }
 
     //Action Listeners are for when buttons are pressed
-
     private void createActionListeners() {
         addStockButton.addActionListener(this);
     }
@@ -106,15 +119,15 @@ public class AddStockWindow implements ActionListener {
                 double sale = Double.parseDouble(salePriceTextField.getText()
                         .trim().replaceAll("[^a-zA-Z0-9.]", ""));
                 Data.inventory.add(new Stock(name, quantity, cost, sale));
+                writer.updateInventory();
             } catch (NumberFormatException | InputMismatchException ex) {
                 JOptionPane.showMessageDialog(null, "Invalid Input","",JOptionPane.ERROR_MESSAGE);
+            } finally {
+                itemNameTextField.setText("Item Name");
+                quantityTextField.setText("Quantity");
+                costExpenditureTextField.setText("Cost");
+                salePriceTextField.setText("Sale Price");
             }
-            writer.updateInventory();
-            itemNameTextField.setText("Item Name");
-            quantityTextField.setText("Quantity");
-            costExpenditureTextField.setText("Cost");
-            salePriceTextField.setText("Sale Price");
-            //Should also add the new item to the table
         }
     }
 }

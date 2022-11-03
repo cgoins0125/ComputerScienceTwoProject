@@ -15,9 +15,10 @@ import java.util.ArrayList;
 public class Data {
 
     public static ArrayList<Stock> inventory = new ArrayList<>();
-    public static ArrayList<Sale> sales = new ArrayList<>();
+    public static ArrayList<SalesReport> sales = new ArrayList<>();
     public static ArrayList<User> users = new ArrayList<>();
     public static ArrayList<Supplier> suppliers = new ArrayList<>();
     public static ArrayList<Customer> customers = new ArrayList<>();
+
 
 }

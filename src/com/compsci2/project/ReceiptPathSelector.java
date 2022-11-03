@@ -5,8 +5,6 @@ import java.io.File;
 
 public class ReceiptPathSelector {
     private JFileChooser jfc;
-
-    private JFrame frame;
     private String receiptPath;
 
         public ReceiptPathSelector() {

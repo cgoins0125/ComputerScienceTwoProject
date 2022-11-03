@@ -35,7 +35,7 @@ public class CSVWriter {
      * Concatenates data from the ArrayList<Sale> sales to fileContents
      * Stores fileContents in a CSV file: "sales.txt"
      */
-    public void updateSales() {
+    public void updateSales(Sale sale) {
         String fileContents = "";
         File salesFile = new File("sales.txt");
         try (Scanner in = new Scanner(salesFile)) {
@@ -50,9 +50,7 @@ public class CSVWriter {
         try (FileWriter salesWriter = new FileWriter("sales.txt")) {
             salesWriter.write("receiptId, customerId, subtotal, salesTax, totalSale, costExpenditure, profit, sellMade,");
             salesWriter.write(fileContents);
-            for (Sale sale : Data.sales) {
-                salesWriter.write("\n" + sale.toString());
-            }
+            salesWriter.write("\n" + sale.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -61,11 +59,12 @@ public class CSVWriter {
     /**
      * Stores the data from ArrayList<User> users in a CSV file: "users.txt"
      */
-    private void updateUsers() {
+    public void updateUsers() {
         try (FileWriter inventoryWriter = new FileWriter("users.txt")) {
-            inventoryWriter.write("username,password");
+            inventoryWriter.write("username,password,first name,last name,");
             for (User user : Data.users) {
-                inventoryWriter.write("\n" + user.getUsername() + "," + user.getPassword() + ",");
+                inventoryWriter.write("\n" + user.getUsername() + "," + user.getPassword() + "," +
+                        user.getFirstName() + "," + user.getLastName() + ",");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,7 +74,7 @@ public class CSVWriter {
     /**
      * Stores the data from ArrayList<Supplier> suppliers in a CSV file: "suppliers.txt"
      */
-    private void updateSuppliers() {
+    public void updateSuppliers() {
         try (FileWriter suppliersWriter = new FileWriter("suppliers.txt")) {
             suppliersWriter.write("ID, BusinessName, Email, Phone Number, Address");
             for (Supplier supplier : Data.suppliers) {
@@ -89,7 +88,7 @@ public class CSVWriter {
     /**
      * Stores the data from ArrayList<Customer> customers in a CSV file: "customers.txt"
      */
-    private void updateCustomers() {
+    public void updateCustomers() {
         try (FileWriter customersWriter = new FileWriter("customers.txt")) {
             customersWriter.write("ID, CustomerName, Email, Phone Number, address");
             for (Customer customer : Data.customers) {

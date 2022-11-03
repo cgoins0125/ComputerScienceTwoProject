@@ -14,7 +14,7 @@ public class CSVReader {
 
     private String receiptsPath;
     private ArrayList<Stock> inventory;
-    private ArrayList<Sale> sales;
+    private ArrayList<SalesReport> sales;
     private ArrayList<User> users;
     private ArrayList<Supplier> suppliers;
     private ArrayList<Customer> customers;
@@ -23,29 +23,6 @@ public class CSVReader {
     private File usersFile;
     private File suppliersFile;
     private File customersFile;
-
-    /**
-     * @param receiptsPath the path for receipts to be stored
-     * @param inventoryFile the CSV file containing Stock data
-     * @param salesFile the CSV file containing Sale data
-     * @param usersFile the CSV file containing User data
-     * @param suppliersFile the CSV file containing supplier data
-     * @param customersFile the CSV file for storing customer data
-     */
-    public CSVReader(String receiptsPath, File inventoryFile, File salesFile, File usersFile, File suppliersFile, File customersFile) {
-        this.receiptsPath = receiptsPath;
-        this.inventory = Data.inventory;
-        this.sales = Data.sales;
-        this.users = Data.users;
-        this.suppliers = Data.suppliers;
-        this.customers = Data.customers;
-        this.inventoryFile = inventoryFile;
-        this.salesFile = salesFile;
-        this.usersFile = usersFile;
-        this.suppliersFile = suppliersFile;
-        this.customersFile = customersFile;
-        initialize();
-    }
 
     public CSVReader(String receiptsPath) {
         this.receiptsPath = receiptsPath;
@@ -116,23 +93,33 @@ public class CSVReader {
      * Calculates sale count from salesFile and passes it as an argument to Sales class
      */
     private void initializeSales() {
-        int saleCount = 0;
         try (Scanner in = new Scanner(salesFile)) {
-            while (in.hasNextLine()) {
-                in.nextLine();
-                saleCount++;
+            in.useDelimiter(",");
+            //Necessary to skip the first line of the CSV file which contains the header - checks if it is blank
+            if (in.hasNextLine()) in.nextLine();
+            while (in.hasNext()) {
+                try {
+                    int receiptId = Integer.parseInt(in.next().trim());
+                    int customerId = Integer.parseInt(in.next().trim());
+                    double subtotal = Double.parseDouble(in.next().trim());
+                    double salesTax = Double.parseDouble(in.next().trim());
+                    double totalSale = Double.parseDouble(in.next().trim());
+                    double costExpenditure = Double.parseDouble(in.next().trim());
+                    double profit = Double.parseDouble(in.next().trim());
+                    String sellDate = in.next().trim();
+                    sales.add(new SalesReport(receiptId, customerId, subtotal, salesTax, totalSale, costExpenditure, profit, sellDate));
+                } catch (NumberFormatException e) {
+                    throw new NumberFormatException("Please check that sales CSV file is formatted correctly");
+                }
             }
         } catch (FileNotFoundException e) {
             try (FileWriter fw = new FileWriter("sales.txt")) {
-                fw.write("receiptId, customerId, subtotal, salesTax, totalSale, costExpenditure, profit, sellMade,");
+                fw.write("receiptId, customerId, subtotal, salesTax, totalSale, costExpenditure, profit, sellDate,");
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
             initializeSales();
         }
-        //for when document is blank
-        if (saleCount == 0) saleCount++;
-        Sale init = new Sale(saleCount);
     }
 
     /**
@@ -147,14 +134,16 @@ public class CSVReader {
                 try {
                    String username = in.next().toLowerCase().trim();
                     String password = in.next().trim();
-                    users.add(new User(username,password));
+                    String firstName = in.next().trim();
+                    String lastName = in.next().trim();
+                    users.add(new User(username,password,firstName,lastName));
                 } catch (InputMismatchException e) {
                     throw new InputMismatchException("Please check that user CSV file is formatted correctly");
                 }
             }
         } catch (FileNotFoundException e) {
             try (FileWriter fw = new FileWriter("users.txt")) {
-                fw.write("username,password");
+                fw.write("username,password,first name, last name,");
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
@@ -176,12 +165,12 @@ public class CSVReader {
                     int id = Integer.parseInt(in.next().trim());
                     String name = in.next().trim();
                     String email = in.next().trim();
-                    String address = in.next().trim();
                     String number = in.next().trim();
+                    String address = in.next().trim()+","+in.next().trim()+","+in.next().trim()+","+in.next().trim();
                     if (name.equals("null")) name = null;
                     if (email.equals("null")) email = null;
-                    if (address.equals("null")) address = null;
                     if (number.equals("null")) number = null;
+                    if (address.equals("null")) address = null;
                     suppliers.add(new Supplier(id,name,email,number,address));
                 } catch (InputMismatchException e) {
                     throw new InputMismatchException("Please check that supplier CSV file is formatted correctly");
@@ -189,7 +178,7 @@ public class CSVReader {
             }
         } catch (FileNotFoundException e) {
             try (FileWriter fw = new FileWriter("suppliers.txt")) {
-                fw.write("ID, BusinessName, Email, Phone Number, Address");
+                fw.write("ID, BusinessName, Email, Phone Number, Address, City, State, Zip Code,");
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
@@ -212,11 +201,11 @@ public class CSVReader {
                     String name = in.next().trim();
                     String email = in.next().trim();
                     String number = in.next().trim();
-                    String address = in.next().trim();
+                    String address = in.next().trim()+","+in.next().trim()+","+in.next().trim()+","+in.next().trim();
                     if (name.equals("null")) name = null;
                     if (email.equals("null")) email = null;
-                    if (address.equals("null")) address = null;
                     if (number.equals("null")) number = null;
+                    if (address.equals("null")) address = null;
                     customers.add(new Customer(id,name,email,number,address));
                 } catch (InputMismatchException e) {
                     throw new InputMismatchException("Please check that customer CSV file is formatted correctly");
@@ -224,7 +213,7 @@ public class CSVReader {
             }
         } catch (FileNotFoundException e) {
             try (FileWriter fw = new FileWriter("customers.txt")) {
-                fw.write("ID, CustomerName, Email, Phone Number, address");
+                fw.write("ID, Customer Name, Email, Phone Number, Address, City, State, Zip Code,");
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }

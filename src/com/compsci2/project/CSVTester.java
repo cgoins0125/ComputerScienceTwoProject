@@ -1,6 +1,6 @@
 package com.compsci2.project;
 
-import com.compsci2.project.ui.UI;
+import com.compsci2.project.ui.LoginPage;
 
 import javax.swing.*;
 import java.io.File;
@@ -44,8 +44,8 @@ public class CSVTester {
 
         //sale test
         /*int[][] sale1 = {{1,4},{2,7}};
-        Data.sales.add(new Sale(1,sale1));
-        Receipt receipt = new Receipt(Data.sales.get(0));*/
+        Data.sales.add(new Sale(1,sale1));*/
+        //Receipt receipt = new Receipt(Data.sales.get(0));
 
         //user test
         /*LoginAttempt login = new LoginAttempt();*/
@@ -58,8 +58,7 @@ public class CSVTester {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                UI ui = new UI();
-                ui.createStockPage();
+                LoginPage lp = new LoginPage();
             }
         });
 

@@ -1,14 +1,14 @@
 package com.compsci2.project.ui;
 
+import com.compsci2.project.CSVWriter;
 import com.compsci2.project.Data;
 import com.compsci2.project.Stock;
-
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,27 +16,33 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 public class StockPage implements ActionListener {
+    private JFrame stockFrame;
     private JButton saleButton;
     private JButton inventoryButton;
-    private JButton thirdPartyButton;
+    private JButton suppliersButton;
     private JButton logOutButton;
     private JTextField searchTextField;
     private JButton newButton;
-    private JButton updateButton;
     private JButton deleteButton;
     private JTable inventoryTable;
     private JPanel rootPanel;
     private JButton usersButton;
+    private JButton customersButton;
     private DefaultTableModel tableModel;
+    private CSVWriter writer;
 
-    public StockPage() {
+    public StockPage(Point p) {
+        writer = new CSVWriter();
         createFocusListeners();
         createActionListeners();
         createTable();
-    }
-
-    public JPanel getRootPanel() {
-        return rootPanel;
+        createTableModelListener();
+        stockFrame = new JFrame();
+        stockFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        stockFrame.setLocation(p);
+        stockFrame.setContentPane(rootPanel);
+        stockFrame.pack();
+        stockFrame.setVisible(true);
     }
 
     private void createTable() {
@@ -52,44 +58,93 @@ public class StockPage implements ActionListener {
             data[i][4] = item.getSalePrice();
             i++;
         }
-            tableModel = new DefaultTableModel(data, inventoryHeader);
-            inventoryTable.setModel(tableModel);
+        tableModel = new DefaultTableModel(data, inventoryHeader);
+        inventoryTable.setModel(tableModel);
+        inventoryTable.getTableHeader().setReorderingAllowed(false);
 
-            //The following makes the table and the search bar dynamically update
-            TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(inventoryTable.getModel());
-            inventoryTable.setRowSorter(rowSorter);
-            searchTextField.getDocument().addDocumentListener(new DocumentListener() {
+        //The following makes the table dynamically update based on what is typed in the search bar
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(inventoryTable.getModel());
+        inventoryTable.setRowSorter(rowSorter);
+        searchTextField.getDocument().addDocumentListener(new DocumentListener() {
 
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    String text = searchTextField.getText();
-                    if (text.trim().length()==0 || text.equals("Search")) {
-                        rowSorter.setRowFilter(null);
-                    } else {
-                        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-                    }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String text = searchTextField.getText();
+                if (text.trim().length() == 0 || text.equals("Search")) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
                 }
+            }
 
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    String text = searchTextField.getText();
-                    if (text.trim().length()==0 || text.equals("Search")) {
-                        rowSorter.setRowFilter(null);
-                    } else {
-                        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-                    }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String text = searchTextField.getText();
+                if (text.trim().length() == 0 || text.equals("Search")) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
                 }
+            }
 
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    throw new UnsupportedOperationException("Not supported yet");
-                }
-            });
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet");
+            }
+        });
 
     }
 
-    public void updateTable() {
+    private void createTableModelListener() {
+        tableModel.addTableModelListener(new TableModelListener() {
+            @Override
+            public void tableChanged(TableModelEvent e) {
+                int row = e.getFirstRow();
+                int column = e.getColumn();
+                if (column == 0) {
+                    JOptionPane.showMessageDialog(null, "ITEM ID CAN NOT BE MODIFIED \nTHE CHANGE WILL NOT BE SAVED","",JOptionPane.ERROR_MESSAGE);
+                }
+                //Do not allow changes to ID number when column == 0 *changes can be made but will not be saved - unless we can prevent them
+                if (column == 1) { //item name
+                    Data.inventory.get(row).setItemName((String)tableModel.getValueAt(row, column));
+                    writer.updateInventory();
+                }
 
+                else if (column == 2) { //quantity
+                    try {
+                        String input = (String)tableModel.getValueAt(row,column);
+                        int quantity = Integer.parseInt(input.trim().replaceAll("[^a-zA-Z0-9.]", ""));
+                        Data.inventory.get(row).setQuantityOnHand(quantity);
+                        writer.updateInventory();
+                    } catch (ClassCastException | NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(null, "Invalid Input \nPlease enter a valid integer for quantity","",JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+
+                else if (column == 3) { //cost expenditure
+                    try {
+                        String input = (String)tableModel.getValueAt(row, column);
+                        input.trim().replaceAll("[^a-zA-Z0-9.]", "");
+                        Data.inventory.get(row).setCostExpenditure(Double.parseDouble(input));
+                        writer.updateInventory();
+                    } catch (ClassCastException | NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(null, "Invalid Input \nPlease enter a valid input for cost expenditure", "", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+
+                else if (column == 4) { //sale price
+                    try {
+                        String input = (String)tableModel.getValueAt(row, column);
+                        input.trim().replaceAll("[^a-zA-Z0-9.]", "");
+                        Data.inventory.get(row).setSalePrice(Double.parseDouble(input));
+                        writer.updateInventory();
+                    } catch (ClassCastException | NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(null, "Invalid Input \nPlease enter a valid input for sale price", "", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+
+            }
+        });
     }
 
     private void createFocusListeners() {
@@ -110,59 +165,69 @@ public class StockPage implements ActionListener {
     private void createActionListeners() {
         //this - gets the action performed method in this class
         inventoryButton.addActionListener(this);
-        thirdPartyButton.addActionListener(this);
+        suppliersButton.addActionListener(this);
         saleButton.addActionListener(this);
         usersButton.addActionListener(this);
         logOutButton.addActionListener(this);
         newButton.addActionListener(this);
-        updateButton.addActionListener(this);
         deleteButton.addActionListener(this);
+        customersButton.addActionListener(this);
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
         //for getting a new page and closing the one that is clicked on
         if (e.getSource() == inventoryButton) {
-            //when inventory button is pressed while on stock page, nothing should happen
+            createTable();
         }
 
-        if (e.getSource() == thirdPartyButton) {
-            UI ui = new UI();
-            ui.newWindow();
-            ui.closeStockPage();
+        if (e.getSource() == suppliersButton) {
+            SuppliersPage sp = new SuppliersPage(stockFrame.getLocation());
+            stockFrame.dispose();
         }
 
         if (e.getSource() == saleButton) {
-            UI ui = new UI();
-            ui.newWindow();
-            ui.closeStockPage();
+            SalesPage sp = new SalesPage(stockFrame.getLocation());
+            stockFrame.dispose();
         }
 
         if (e.getSource() == usersButton) {
-            UI ui = new UI();
-            ui.newWindow();
-            ui.closeStockPage();
+            UsersPage up = new UsersPage(stockFrame.getLocation());
+            stockFrame.dispose();
         }
 
         if (e.getSource() == logOutButton) {
-            UI ui = new UI();
-            ui.newWindow();
-            ui.closeStockPage();
+            LoginPage lp = new LoginPage();
+            stockFrame.dispose();
+        }
+
+        if (e.getSource() == customersButton) {
+            CustomersPage cp = new CustomersPage(stockFrame.getLocation());
+            stockFrame.dispose();
         }
 
         if (e.getSource() == newButton) {
-            UI ui = new UI();
-            ui.addStockWindow();
+            AddStockWindow sw = new AddStockWindow(stockFrame.getLocation());
+            stockFrame.dispose();
         }
 
         if (e.getSource() == deleteButton) {
-            System.out.println(inventoryTable.getSelectedColumn());
-        }
-
-        if (e.getSource() == updateButton) {
-            //What happens when the update button is pressed - consider allowing modifications to happen in the table (We wouldn't want to edit item id or name though)
-            //We may not need the update button
+            int row = inventoryTable.getSelectedRow();
+            int itemId = Integer.parseInt(inventoryTable.getValueAt(row,0).toString());
+            String itemName = (String)inventoryTable.getValueAt(row,1);
+            int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete " + itemName + "?","Confirm delete",JOptionPane.YES_NO_OPTION,JOptionPane.ERROR_MESSAGE);
+            if (choice == 0) {//0 is yes
+                int index = 0;
+                for (Stock item : Data.inventory) {
+                    if (itemId != item.getItemId()) {
+                        index++;
+                    }
+                    else break;
+                }
+                Data.inventory.remove(index);
+                writer.updateInventory();
+                createTable();
+            }
         }
     }
 
