@@ -1,2 +1,1 @@
-ID, BusinessName, Email, Phone Number, Address
-1, Pest Control, pestcontrol@gmail.com, 423-222-2222, 123 ChattState dr, Chattanooga, TN, 37412,
+ID, BusinessName, Email, Phone Number, Address, City, State, Zip Code

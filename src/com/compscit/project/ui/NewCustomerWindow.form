@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.compscit.project.ui.NewCustomerWindow">
+  <grid id="27dc6" binding="rootPanel" layout-manager="GridLayoutManager" row-count="7" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="5" bottom="10" right="5"/>
+    <constraints>
+      <xy x="20" y="20" width="644" height="253"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="c8915" class="javax.swing.JButton" binding="createCustomerButton">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Create Customer"/>
+        </properties>
+      </component>
+      <grid id="58a84" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="10bdd" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Customer Name (required):"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="1c676" class="javax.swing.JTextField" binding="cityTextField" default-binding="true">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <text value="City"/>
+        </properties>
+      </component>
+      <vspacer id="72b6c">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="c3d4b" class="javax.swing.JTextField" binding="customerNameTextField">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font style="2"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <grid id="178aa" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="e11f8" class="javax.swing.JCheckBox" binding="emailCheckBox" default-binding="true">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <enabled value="true"/>
+              <selected value="true"/>
+              <text value="Email:"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="1a8f3" class="javax.swing.JTextField" binding="emailTextField">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <font style="2"/>
+          <text value="abc@abc.com"/>
+        </properties>
+      </component>
+      <component id="c0d50" class="javax.swing.JCheckBox" binding="phoneNumberCheckBox" default-binding="true">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <selected value="true"/>
+          <text value="Phone Number: "/>
+        </properties>
+      </component>
+      <component id="c6fa2" class="javax.swing.JComboBox" binding="stateComboBox">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="Alabama"/>
+            <item value="Alaska"/>
+            <item value="Arizona"/>
+            <item value="Arkansas"/>
+            <item value="California"/>
+            <item value="Colorado"/>
+            <item value="Connecticut"/>
+            <item value="Delaware"/>
+            <item value="Florida"/>
+            <item value="Georgia"/>
+            <item value="Hawaii"/>
+            <item value="Idaho"/>
+            <item value="Illinois"/>
+            <item value="Indiana"/>
+            <item value="Iowa"/>
+            <item value="Kansas"/>
+            <item value="Kentucky"/>
+            <item value="Louisiana"/>
+            <item value="Maine"/>
+            <item value="Maryland"/>
+            <item value="Massachusetts"/>
+            <item value="Michigan"/>
+            <item value="Minnesota"/>
+            <item value="Mississippi"/>
+            <item value="Missouri"/>
+            <item value="Montana"/>
+            <item value="Nebraska"/>
+            <item value="Nevada"/>
+            <item value="New Hampshire"/>
+            <item value="New Jersey"/>
+            <item value="New Mexico"/>
+            <item value="New York"/>
+            <item value="North Carolina"/>
+            <item value="North Dakota"/>
+            <item value="Ohio"/>
+            <item value="Oklahoma"/>
+            <item value="Oregon"/>
+            <item value="Pennsylvania"/>
+            <item value="Rhode Island"/>
+            <item value="South Carolina"/>
+            <item value="South Dakota"/>
+            <item value="Tennessee"/>
+            <item value="Texas"/>
+            <item value="Utah"/>
+            <item value="Vermont"/>
+            <item value="Virginia"/>
+            <item value="Washington"/>
+            <item value="West Virginia"/>
+            <item value="Wisconsin"/>
+            <item value="Wyoming"/>
+          </model>
+        </properties>
+      </component>
+      <component id="ef86" class="javax.swing.JTextField" binding="zipCodeTextField" default-binding="true">
+        <constraints>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <text value="Zip Code"/>
+        </properties>
+      </component>
+      <component id="8fa64" class="javax.swing.JTextField" binding="streetAddressTextField">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <text value="123 ChattState Dr"/>
+        </properties>
+      </component>
+      <component id="f7961" class="javax.swing.JTextField" binding="aptNumberTextField" default-binding="true">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <text value="Apt Number"/>
+        </properties>
+      </component>
+      <component id="3c1f8" class="javax.swing.JCheckBox" binding="addressCheckBox" default-binding="true">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <selected value="true"/>
+          <text value="Address:"/>
+        </properties>
+      </component>
+      <component id="5f549" class="javax.swing.JFormattedTextField" binding="phoneNumberTextField">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="true"/>
+          <text value="###-###-####"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
