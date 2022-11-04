@@ -112,14 +112,14 @@ public class NewAccountPage implements ActionListener {
             String lastName = lastNameTextField.getText().trim();
             String enteredUsername = usernameTextField.getText().trim();
             char[] pw1 = passwordField1.getPassword();
-            String enteredPassword1 = "";
-            for (int i = 0; i < pw1.length; i++) {
-                enteredPassword1 += pw1[i];
+            StringBuilder enteredPassword1 = new StringBuilder();
+            for (char value : pw1) {
+                enteredPassword1.append(value);
             }
             char[] pw2 = passwordField2.getPassword();
-            String enteredPassword2 = "";
-            for (int i = 0; i < pw2.length; i++) {
-                enteredPassword2 += pw2[i];
+            StringBuilder enteredPassword2 = new StringBuilder();
+            for (char c : pw2) {
+                enteredPassword2.append(c);
             }
 
             //password check not working!!
@@ -127,12 +127,12 @@ public class NewAccountPage implements ActionListener {
             //if all inputs are acceptable, account is created
             if (enteredUsername.length()<5) JOptionPane.showMessageDialog(null, "Username must be at least 5 characters", "", JOptionPane.ERROR_MESSAGE);
             else if (enteredPassword1.length()<5) JOptionPane.showMessageDialog(null, "Password must be at least 5 characters", "", JOptionPane.ERROR_MESSAGE);
-            else if (enteredPassword1.contains(" ")) JOptionPane.showMessageDialog(null, "Password cannot contain spaces", "", JOptionPane.ERROR_MESSAGE);
-            else if (firstName.contains(",") || lastName.contains(",") || enteredUsername.contains(",") || enteredPassword1.contains(","))
+            else if (enteredPassword1.toString().contains(" ")) JOptionPane.showMessageDialog(null, "Password cannot contain spaces", "", JOptionPane.ERROR_MESSAGE);
+            else if (firstName.contains(",") || lastName.contains(",") || enteredUsername.contains(",") || enteredPassword1.toString().contains(","))
                 JOptionPane.showMessageDialog(null, "Commas are not acceptable", "", JOptionPane.ERROR_MESSAGE);
-            else if (enteredPassword1.equals(enteredPassword2)) {
+            else if (enteredPassword1.toString().equals(enteredPassword2.toString())) {
                 if (!User.usernameExists(enteredUsername)) {
-                    Data.users.add(new User(enteredUsername,enteredPassword1, firstName, lastName));
+                    Data.users.add(new User(enteredUsername, enteredPassword1.toString(), firstName, lastName));
                     writer.updateUsers();
                     JOptionPane.showMessageDialog(null, "Account created successfully");
                     LoginPage lp = new LoginPage();

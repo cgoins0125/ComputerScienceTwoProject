@@ -16,9 +16,7 @@ public class User {
     private static ArrayList<User> users = Data.users;
     private String username;
     private String password;
-
     private String firstName;
-
     private String lastName;
 
     /**
@@ -87,7 +85,7 @@ public class User {
     /**
      *
      * @param username
-     * @return
+     * @return if the username exists
      */
     public static boolean usernameExists(String username) {
         for (User user : users) {
@@ -98,6 +96,12 @@ public class User {
         return false;
     }
 
+    /**
+     *
+     * @param username the username of the account to check
+     * @param password the entered password to check
+     * @return if the password matches the username
+     */
     public static boolean correctPassword(String username, String password) {
         for (User user : users) {
             if (username.equalsIgnoreCase(user.getUsername()) && password.equals(user.getPassword())) {
@@ -107,29 +111,4 @@ public class User {
         return false;
     }
 
-
-//    /**
-//     * Static method to set adminKey
-//     */
-//    public static void setAdminKey(){
-//        adminKey = "1234567";
-//    }   
-////    /**
-////     * Determines if the entered adminKey is correct .
-////     * @param adminKey
-////     * @return userType
-////     */
-//    public boolean isAdmin(String adminKey){
-//        
-//        if(adminKey.equals("1234567")){
-//            isAdmin = true;
-//    }
-//                 
-//        return this.isAdmin;
-//    }
-
-
-    
-        
-    
 }

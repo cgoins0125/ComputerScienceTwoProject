@@ -48,7 +48,7 @@ public class SuppliersPage implements ActionListener {
         suppliersFrame.setVisible(true);
     }
 
-    private void createTable() {
+    public void createTable() {
         //This creates the table model by getting the data from the ArrayList suppliers and storing it in a tabla
         String[] thirdPartyHeader = {"Id", "Name", "Email", "Phone Number", "Address"};
         Object[][] supplierData = new Object[Data.suppliers.size()][5];
@@ -64,10 +64,6 @@ public class SuppliersPage implements ActionListener {
         tableModel = new DefaultTableModel(supplierData, thirdPartyHeader);
         supplierTable.setModel(tableModel);
         supplierTable.getTableHeader().setReorderingAllowed(false);
-        supplierTable.setShowGrid(false);
-        supplierTable.setShowVerticalLines(true);
-        supplierTable.setGridColor(Color.BLACK);
-
 
         supplierTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         supplierTable.getColumnModel().getColumn(0).setMinWidth(30);
@@ -162,7 +158,7 @@ public class SuppliersPage implements ActionListener {
 
                 } else if (column == 3) { //phone number
                     String phoneNumber = ((String)tableModel.getValueAt(row, column)).trim();
-                    phoneNumber = phoneNumber.replaceAll("[^0-9-]", "");
+                    phoneNumber = phoneNumber.replaceAll("[^0-9-,]", "");
                     try (Scanner in = new Scanner(phoneNumber)) {
                         if (phoneNumber.isBlank()) throw new NullPointerException();
                         in.useDelimiter("-");
@@ -171,7 +167,7 @@ public class SuppliersPage implements ActionListener {
                             i++;
                             in.next();
                         }
-                        if (i != 3 || phoneNumber.length() != 12 || !phoneNumber.substring(3,4).equals("-") || !phoneNumber.substring(7,8).equals("-")) {
+                        if (i != 3 || phoneNumber.length() != 12 || phoneNumber.charAt(3) != '-' || phoneNumber.charAt(7) != '-') {
                             JOptionPane.showMessageDialog(null, "Phone Number format should follow ###-###-####", "", JOptionPane.ERROR_MESSAGE);
                         } else {
                             if (phoneNumber.contains(",")) {
@@ -271,7 +267,8 @@ public class SuppliersPage implements ActionListener {
         }
 
         if (e.getSource() == newButton) {
-            //NEW SUPPLIERS!!
+            NewSupplierWindow ns = new NewSupplierWindow(suppliersFrame.getLocation());
+            suppliersFrame.dispose();
         }
 
         if (e.getSource() == deleteButton) {

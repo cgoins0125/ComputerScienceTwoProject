@@ -80,7 +80,7 @@ public class ThirdParty implements Comparable<ThirdParty> {
      * @param phone
      */
     public void setPhoneNumber(String phone) {
-        this.phoneNum = phoneNum;
+        this.phoneNum = phone;
     }
 
     /**

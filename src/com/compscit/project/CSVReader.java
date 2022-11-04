@@ -24,8 +24,8 @@ public class CSVReader {
     private File suppliersFile;
     private File customersFile;
 
-    public CSVReader(String receiptsPath) {
-        this.receiptsPath = receiptsPath;
+    public CSVReader() {
+        this.receiptsPath = getReceiptPath();
         this.inventory = Data.inventory;
         this.sales = Data.sales;
         this.users = Data.users;
@@ -50,6 +50,29 @@ public class CSVReader {
         initializeUsers();
         initializeSuppliers();
         initializeCustomers();
+    }
+
+    /**
+     * the following is for selecting a path to store digital receipts
+     * only asks for you to do this if a path has not been previously selected
+     * @return path the path chosen by the user the first time program runs subsequent program runs scans the path from
+     * the .txt file receiptPath
+     */
+    public String getReceiptPath() {
+        String path = "";
+        File receiptPath = new File("receiptPath.txt");
+        try (Scanner in = new Scanner(receiptPath)) {
+            path = in.nextLine();
+        } catch (FileNotFoundException e) {
+            ReceiptPathSelector rps = new ReceiptPathSelector();
+            path = rps.getReceiptPath();
+            try (FileWriter fw = new FileWriter("receiptPath.txt")) {
+                fw.write(path);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+        return path;
     }
 
     /**
@@ -166,11 +189,12 @@ public class CSVReader {
                     String name = in.next().trim();
                     String email = in.next().trim();
                     String number = in.next().trim();
-                    String address = in.next().trim()+","+in.next().trim()+","+in.next().trim()+","+in.next().trim();
+                    String address = in.next().trim();
+                    if (address.equals("null")) address = null;
+                    else address += ","+in.next().trim()+","+in.next().trim()+","+in.next().trim();
                     if (name.equals("null")) name = null;
                     if (email.equals("null")) email = null;
                     if (number.equals("null")) number = null;
-                    if (address.equals("null")) address = null;
                     suppliers.add(new Supplier(id,name,email,number,address));
                 } catch (InputMismatchException e) {
                     throw new InputMismatchException("Please check that supplier CSV file is formatted correctly");
@@ -202,7 +226,7 @@ public class CSVReader {
                     String email = in.next().trim();
                     String number = in.next().trim();
                     String address = in.next().trim();
-                    if (address.equals("null"))address = null;
+                    if (address.equals("null")) address = null;
                     else address += ","+in.next().trim()+","+in.next().trim()+","+in.next().trim();
                     if (name.equals("null")) name = null;
                     if (email.equals("null")) email = null;

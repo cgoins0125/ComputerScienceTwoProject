@@ -49,7 +49,7 @@ public class CustomersPage implements ActionListener {
         customersFrame.setVisible(true);
     }
 
-    private void createTable() {
+    public void createTable() {
 
         //This creates the table model by getting the data from the ArrayList suppliers and storing it in a tabla
         String[] thirdPartyHeader = {"Id", "Name", "Email", "Phone Number", "Address"};
@@ -161,7 +161,7 @@ public class CustomersPage implements ActionListener {
 
                 } else if (column == 3) { //phone number
                     String phoneNumber = ((String)tableModel.getValueAt(row, column)).trim();
-                    phoneNumber = phoneNumber.replaceAll("[^0-9-]", "");
+                    phoneNumber = phoneNumber.replaceAll("[^0-9-,]", "");
                     try (Scanner in = new Scanner(phoneNumber)) {
                         if (phoneNumber.isBlank()) throw new NullPointerException();
                         in.useDelimiter("-");
@@ -170,7 +170,7 @@ public class CustomersPage implements ActionListener {
                             i++;
                             in.next();
                         }
-                        if (i != 3 || phoneNumber.length() != 12 || !phoneNumber.substring(3,4).equals("-") || !phoneNumber.substring(7,8).equals("-")) {
+                        if (i != 3 || phoneNumber.length() != 12 || phoneNumber.charAt(3) != '-' || phoneNumber.charAt(7) != '-') {
                             JOptionPane.showMessageDialog(null, "Phone Number format should follow ###-###-####", "", JOptionPane.ERROR_MESSAGE);
                         } else {
                             if (phoneNumber.contains(",")) {
@@ -187,7 +187,7 @@ public class CustomersPage implements ActionListener {
 
                 } else if (column == 4) { //address
                     String address = ((String) tableModel.getValueAt(row, column)).trim();
-                    address.replaceAll("[^A-Za-z0-9,.#]", "");
+                    address = address.replaceAll("[^A-Za-z0-9,.#]", "");
                     try (Scanner in = new Scanner(address)) {
                         if (address.isBlank()) throw new NullPointerException();
                         in.useDelimiter(",");

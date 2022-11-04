@@ -108,7 +108,7 @@ public class AddStockWindow implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addStockButton) {
-            try {
+            try { //error checking
                 double cost = Double.parseDouble(costExpenditureTextField.getText()
                         .trim().replaceAll("[^a-zA-Z0-9.]", ""));
                 double sale = Double.parseDouble(salePriceTextField.getText()
@@ -121,7 +121,7 @@ public class AddStockWindow implements ActionListener {
                     throw new InputMismatchException();
                 } else {
                     quantity = Integer.parseInt(quantityTextField.getText().trim().replaceAll("[^a-zA-Z0-9]", ""));
-                    name.toLowerCase().trim().replaceAll(",", "");
+                    name = name.toLowerCase().trim().replaceAll(",", "");
                     Data.inventory.add(new Stock(name, quantity, cost, sale));
                     writer.updateInventory();
                 }

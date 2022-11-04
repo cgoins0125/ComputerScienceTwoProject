@@ -1,18 +1,18 @@
 package com.compscit.project.ui;
 
 import com.compscit.project.CSVWriter;
-import com.compscit.project.Customer;
 import com.compscit.project.Data;
+import com.compscit.project.Supplier;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class NewCustomerWindow implements ActionListener {
+public class NewSupplierWindow implements ActionListener {
 
-    private JFrame newCustomerWindow;
+    private JFrame newSupplierWindow;
     private JPanel rootPanel;
-    private JTextField customerNameTextField;
+    private JTextField supplierNameTextField;
     private JTextField emailTextField;
     private JTextField phoneNumberTextField;
     private JTextField streetAddressTextField;
@@ -23,34 +23,36 @@ public class NewCustomerWindow implements ActionListener {
     private JCheckBox emailCheckBox;
     private JCheckBox phoneNumberCheckBox;
     private JCheckBox addressCheckBox;
-    private JButton createCustomerButton;
+    private JButton createSupplierButton;
     private CSVWriter writer;
-    private CustomersPage cp;
+    SuppliersPage sp;
 
     //constructor
-    public NewCustomerWindow(Point p) {
-        cp = new CustomersPage(p);
+    public NewSupplierWindow(Point p) {
+        sp = new SuppliersPage(p);
         writer = new CSVWriter();
         createFocusListeners();
         createActionListeners();
         createItemListeners();
         createKeyListener();
-        newCustomerWindow = new JFrame();
-        newCustomerWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        newCustomerWindow.setLocation(p);
-        newCustomerWindow.setContentPane(rootPanel);
-        newCustomerWindow.pack();
-        newCustomerWindow.setVisible(true);
+        newSupplierWindow = new JFrame();
+        newSupplierWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        newSupplierWindow.setLocation(p);
+        newSupplierWindow.setContentPane(rootPanel);
+        newSupplierWindow.pack();
+        newSupplierWindow.setVisible(true);
     }
+
+
 
     //For text box focus
     private void createFocusListeners() {
-        customerNameTextField.addFocusListener(new FocusListener() {
+        supplierNameTextField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                customerNameTextField.setFont(new Font(null, Font.PLAIN, 12));
-                customerNameTextField.setText(null);
-                customerNameTextField.setForeground(Color.BLACK);
+                supplierNameTextField.setFont(new Font(null, Font.PLAIN, 12));
+                supplierNameTextField.setText(null);
+                supplierNameTextField.setForeground(Color.BLACK);
             }
 
             @Override
@@ -282,14 +284,14 @@ public class NewCustomerWindow implements ActionListener {
 
     //For button press
     private void createActionListeners() {
-        createCustomerButton.addActionListener(this);
+        createSupplierButton.addActionListener(this);
     }
 
     //What happens when button is pressed
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == createCustomerButton) {
-            String name = customerNameTextField.getText().trim().replaceAll("[^A-Za-z ]", "");
+        if (e.getSource() == createSupplierButton) {
+            String name = supplierNameTextField.getText().trim().replaceAll("[^A-Za-z .]", "");
 
             String email = null;
             if (emailTextField.isEnabled()) {
@@ -375,11 +377,11 @@ public class NewCustomerWindow implements ActionListener {
 
 
             if (nameValid && emailValid && phoneNumberValid && addressValid) {
-                Data.customers.add(new Customer(name, email, phoneNumber, fullAddress));
-                writer.updateCustomers();
-                cp.createTable();
+                Data.suppliers.add(new Supplier(name, email, phoneNumber, fullAddress));
+                sp.createTable();
+                writer.updateSuppliers();
 
-                customerNameTextField.setText("");
+                supplierNameTextField.setText("");
                 emailTextField.setText("abc@abc.com");
                 phoneNumberTextField.setText("###-###-####");
                 streetAddressTextField.setText("123 ChattState Dr");

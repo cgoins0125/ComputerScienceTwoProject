@@ -31,7 +31,7 @@ public class Receipt {
 
     /**
      * Constructor for receipts, receiptLocation is the String representation of receiptPath
-     * @param sale
+     * @param sale the sale that needs a receipt printed
      */
     public Receipt(Sale sale) {
         this.sale = sale;
@@ -58,9 +58,9 @@ public class Receipt {
             if (!addReceipts.exists()) addReceipts.mkdir();
             File addYear = new File(receiptPath + "\\" + year);
             if (!addYear.exists()) addYear.mkdir();
-            File addMonth = new File(addYear.toString() + "\\" + month);
+            File addMonth = new File(addYear + "\\" + month);
             if (!addMonth.exists()) addMonth.mkdir();
-            File addDay = new File(addMonth.toString() + "\\" + day);
+            File addDay = new File(addMonth + "\\" + day);
             if (!addDay.exists()) addDay.mkdir();
             returnPath=addDay;
         } else { //for Mac
@@ -69,13 +69,12 @@ public class Receipt {
             if (!addReceipts.exists()) addReceipts.mkdir();
             File addYear = new File(receiptPath + "/" + year);
             if (!addYear.exists()) addYear.mkdir();
-            File addMonth = new File(addYear.toString() + "/" + month);
+            File addMonth = new File(addYear + "/" + month);
             if (!addMonth.exists()) addMonth.mkdir();
-            File addDay = new File(addMonth.toString() + "/" + day);
+            File addDay = new File(addMonth + "/" + day);
             if (!addDay.exists()) addDay.mkdir();
             returnPath=addDay;
         }
-
 
         return returnPath;
     }
@@ -87,28 +86,28 @@ public class Receipt {
     private String getReceiptFormat() {
         int itemId = 0;
         int quantitySold = 0;
-        String receiptLine = String.format("%20s","Receipt "+sale.getSaleId()+"\n");
+        StringBuilder receiptLine = new StringBuilder(String.format("%20s", "Receipt " + sale.getSaleId() + "\n"));
         int [][] soldItemId_quantity = sale.getSoldItemId_quantity();
-        for (int i = 0; i < soldItemId_quantity.length; i++) {
-            itemId = soldItemId_quantity[i][0];
-            quantitySold = soldItemId_quantity[i][1];
+        for (int[] ints : soldItemId_quantity) {
+            itemId = ints[0];
+            quantitySold = ints[1];
             for (Stock item : Data.inventory) {
                 if (itemId == item.getItemId()) {
-                    receiptLine += (quantitySold+" "+item.getItemName().toUpperCase());
-                    receiptLine += String.format("%25.2f", (item.getSalePrice() * quantitySold));
-                    receiptLine += "\n";
+                    receiptLine.append(quantitySold).append(" ").append(item.getItemName().toUpperCase());
+                    receiptLine.append(String.format("%25.2f", (item.getSalePrice() * quantitySold)));
+                    receiptLine.append("\n");
                     //breaks out of for loop once item is found
                     break;
                 }
             }
         }
-        receiptLine += String.format("Subtotal: %23.2f", sale.getSubtotal());
-        receiptLine += "\n";
-        receiptLine += String.format("Tax: %28.2f", sale.getTax());
-        receiptLine += "\n";
-        receiptLine += String.format("Total: %26.2f", sale.getTotal());
-        receiptLine += "\n";
-        return receiptLine;
+        receiptLine.append(String.format("Subtotal: %23.2f", sale.getSubtotal()));
+        receiptLine.append("\n");
+        receiptLine.append(String.format("Tax: %28.2f", sale.getTax()));
+        receiptLine.append("\n");
+        receiptLine.append(String.format("Total: %26.2f", sale.getTotal()));
+        receiptLine.append("\n");
+        return receiptLine.toString();
     }
 
     /**

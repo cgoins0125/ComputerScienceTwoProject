@@ -82,13 +82,13 @@ public class LoginPage implements ActionListener {
         if (e.getSource() == loginButton) {
             String enteredUsername = usernameTextField.getText();
             char[] pw = passwordField.getPassword();
-            String enteredPassword = "";
-            for (int i = 0; i < pw.length; i++) {
-               enteredPassword += pw[i];
+            StringBuilder enteredPassword = new StringBuilder();
+            for (char c : pw) {
+                enteredPassword.append(c);
             }
 
                 if (User.usernameExists(enteredUsername)) {
-                    if (User.correctPassword(enteredUsername, enteredPassword)) {
+                    if (User.correctPassword(enteredUsername, enteredPassword.toString())) {
                         StockPage sp = new StockPage(loginFrame.getLocation());
                         loginFrame.dispose();
                     } else {

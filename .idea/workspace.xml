@@ -2,44 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8bc66100-bccf-4f0b-81fe-cf85c419d113" name="Changes" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewAccountPage.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewAccountPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewCustomerWindow.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewCustomerWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/receiptPath.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewSupplierWindow.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewSupplierWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/customers.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/inventory.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/CSVReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/CSVReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/CSVTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/CSVTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/CSVWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/CSVWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/Carburetor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Carburetor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/LoginAttempt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/LoginAttempt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Receipt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/ReceiptPathSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ReceiptPathSelector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/Sale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Sale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/SalesReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/SalesReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Stock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Supplier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/ThirdParty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ThirdParty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/ui/AddStockWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/AddStockWindow.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/ui/AddStockWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/AddStockWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/ui/CustomersPage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/CustomersPage.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/ui/CustomersPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/CustomersPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/ui/LoginPage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/LoginPage.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/ui/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/ui/SalesPage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/SalesPage.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/ui/SalesPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/SalesPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/ui/StockPage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/StockPage.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/ui/StockPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/StockPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/ui/SuppliersPage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/SuppliersPage.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/ui/SuppliersPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/SuppliersPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/ui/UsersPage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/UsersPage.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compsci2/project/ui/UsersPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/UsersPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/CSVReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/CSVReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/CSVTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/CSVTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/CSVWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/CSVWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/Carburetor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Carburetor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Receipt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ReceiptPathSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ReceiptPathSelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/Sale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Sale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Supplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ThirdParty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ThirdParty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/AddStockWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/AddStockWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/CustomersPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/CustomersPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/NewAccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewAccountPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/NewCustomerWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewCustomerWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/StockPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/StockPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/SuppliersPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/SuppliersPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/suppliers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/suppliers.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/users.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,36 +59,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultPlantUmlFileTemplate&quot;: &quot;UML Sequence&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH&quot;: &quot;136&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/caseygoins/Documents/Developer/ComputerScienceTwoProject/src/com/compsci2/project&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;two.files.diff.last.used.file&quot;: &quot;/Users/caseygoins/Documents/Developer/ComputerScienceTwoProject/src/com/compsci2/project/ui/StockPage.form&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultPlantUmlFileTemplate": "UML Sequence",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "136",
+    "last_opened_file_path": "/Users/caseygoins/Documents/Developer/ComputerScienceTwoProject/src/com/compscit/project",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "two.files.diff.last.used.file": "/Users/caseygoins/Documents/Developer/ComputerScienceTwoProject/src/com/compsci2/project/ui/StockPage.form"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/com/compscit/project/" />
       <recent name="$PROJECT_DIR$/src/com/compsci2/project/" />
       <recent name="$PROJECT_DIR$/src/com/compsci2/project" />
       <recent name="$PROJECT_DIR$/src/com/compsci2/project/ui" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/com/compscit/project/ui" />
       <recent name="$PROJECT_DIR$/src/com/compsci2/project/ui" />
       <recent name="$PROJECT_DIR$/src/com/compsci2/project/" />
       <recent name="$PROJECT_DIR$/src/com/compsci2/project" />
       <recent name="$PROJECT_DIR$/src/com/compsci2/ui" />
-      <recent name="$PROJECT_DIR$/src/com/compsci2/project/ui/" />
     </key>
   </component>
   <component name="RunManager" selected="Application.com.compscit.project.CSVTester">
@@ -177,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667487500277</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="first commit">
+      <created>1667573758347</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667573758348</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

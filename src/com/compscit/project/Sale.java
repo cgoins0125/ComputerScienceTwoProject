@@ -44,7 +44,7 @@ public class Sale {
      */
     public Sale (int customerId, int[][] soldItemId_quantity) {
         this.soldItemId_quantity = soldItemId_quantity;
-        if (saleable() == true) {
+        if (saleable()) {
             setDate();
             updateStock();
             this.customerId = customerId;
@@ -77,9 +77,9 @@ public class Sale {
     private boolean saleable() {
         int itemId = 0;
         int quantity = 1;
-        for (int i = 0; i < soldItemId_quantity.length; i++) {
-            itemId = soldItemId_quantity[i][0];
-            quantity = soldItemId_quantity[i][1];
+        for (int[] ints : soldItemId_quantity) {
+            itemId = ints[0];
+            quantity = ints[1];
             for (Stock item : inventory) {
                 if (itemId == item.getItemId()) {
                     //returns false if there is an item in the sale not in the inventory
@@ -100,9 +100,9 @@ public class Sale {
         double total = 0;
         double itemPrice = 0;
         int itemId = 0;
-        for (int i = 0; i < soldItemId_quantity.length; i++) {
-            itemId = soldItemId_quantity[i][0];
-            quantity = soldItemId_quantity[i][1];
+        for (int[] ints : soldItemId_quantity) {
+            itemId = ints[0];
+            quantity = ints[1];
             //compare itemId to inventory to get price. Multiply price by
             // quantity and sum to total.
             for (Stock item : inventory) {
@@ -112,10 +112,9 @@ public class Sale {
                     break;
                 }
             }
-            total += (itemPrice*quantity);
+            total += (itemPrice * quantity);
         }
-        double formattedTotal = Double.parseDouble(df.format(total));
-        return formattedTotal;
+        return Double.parseDouble(df.format(total));
     }
 
     /**
@@ -127,9 +126,9 @@ public class Sale {
         int saleQuantity = 0;
         int itemId = 0;
         int index = 0;
-        for (int i = 0; i < soldItemId_quantity.length; i++) {
-            itemId = soldItemId_quantity[i][0];
-            saleQuantity = soldItemId_quantity[i][1];
+        for (int[] ints : soldItemId_quantity) {
+            itemId = ints[0];
+            saleQuantity = ints[1];
             for (Stock item : inventory) {
                 if (itemId == item.getItemId()) {
                     index = inventory.indexOf(item);
@@ -147,8 +146,7 @@ public class Sale {
      * @return the profit made on this sale
      */
     public double getProfit() {
-        double profit = (getSubtotal() - getCostExpenditure());
-        return profit;
+        return (getSubtotal() - getCostExpenditure());
     }
 
     /**
@@ -161,9 +159,9 @@ public class Sale {
         int itemId = 0;
         int quantitySold = 0;
         double subtotal = 0;
-        for (int i = 0; i < soldItemId_quantity.length; i++) {
-            itemId = soldItemId_quantity[i][0];
-            quantitySold = soldItemId_quantity[i][1];
+        for (int[] ints : soldItemId_quantity) {
+            itemId = ints[0];
+            quantitySold = ints[1];
             for (Stock item : inventory) {
                 if (itemId == item.getItemId()) {
                     subtotal += (item.getSalePrice() * quantitySold);
@@ -171,8 +169,7 @@ public class Sale {
                 }
             }
         }
-        double formattedSubtotal = Double.parseDouble(df.format(subtotal));
-        return formattedSubtotal;
+        return Double.parseDouble(df.format(subtotal));
     }
 
     /**
@@ -182,8 +179,8 @@ public class Sale {
      */
     public double getTax() {
         double tax = getSubtotal() * TAX_AMOUNT;
-        double formattedTax = Double.parseDouble(df.format(tax));
-        return formattedTax;
+        return Double.parseDouble(df.format(tax));
+
     }
 
     /**
@@ -191,8 +188,7 @@ public class Sale {
      * @return subtotal + tax
      */
     public double getTotal() {
-        double total = (getSubtotal() + getTax());
-        return total;
+        return (getSubtotal() + getTax());
     }
 
     /**
@@ -207,7 +203,6 @@ public class Sale {
      * Generates the current date when the Sale object is constructed
      * this should be used during construction, but not when the
      * date is needed outside of construction
-     * @return current date
      */
     private void setDate() {
         int year = Calendar.getInstance().get(Calendar.YEAR);
@@ -218,24 +213,24 @@ public class Sale {
 
     /**
      * Not currently utilizing this method, may want to deprecate
-     * @return ttemID, itemName, quantity, and SalePrice
+     * @return itemID, itemName, quantity, and SalePrice
      */
     public String getItemsSold() {
-        String requiredItems = "Item ID | Item Name | Quantity Sold | Sale Price \n";
+        StringBuilder requiredItems = new StringBuilder("Item ID | Item Name | Quantity Sold | Sale Price \n");
         int itemId = 0;
         int quantitySold = 0;
-        for (int i = 0; i < soldItemId_quantity.length; i++) {
-            itemId = soldItemId_quantity[i][0];
-            quantitySold = soldItemId_quantity[i][1];
+        for (int[] ints : soldItemId_quantity) {
+            itemId = ints[0];
+            quantitySold = ints[1];
             for (Stock item : inventory) {
                 if (itemId == item.getItemId()) {
-                    requiredItems += itemId + " | " + item.getItemName().toUpperCase() + " | " + quantitySold + " | " + item.getSalePrice() + "\n";
+                    requiredItems.append(itemId).append(" | ").append(item.getItemName().toUpperCase()).append(" | ").append(quantitySold).append(" | ").append(item.getSalePrice()).append("\n");
                     //breaks out of for loop once item is found
                     break;
                 }
             }
         }
-        return requiredItems;
+        return requiredItems.toString();
     }
 
     /**

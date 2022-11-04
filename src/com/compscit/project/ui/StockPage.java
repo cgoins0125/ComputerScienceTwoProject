@@ -128,7 +128,7 @@ public class StockPage implements ActionListener {
                 else if (column == 3) { //cost expenditure
                     try {
                         String input = (String)tableModel.getValueAt(row, column);
-                        input.trim().replaceAll("[^a-zA-Z0-9.]", "");
+                        input = input.trim().replaceAll("[^a-zA-Z0-9.]", "");
                         Data.inventory.get(row).setCostExpenditure(Double.parseDouble(input));
                         writer.updateInventory();
                     } catch (ClassCastException | NumberFormatException ex) {
@@ -139,7 +139,7 @@ public class StockPage implements ActionListener {
                 else if (column == 4) { //sale price
                     try {
                         String input = (String)tableModel.getValueAt(row, column);
-                        input.trim().replaceAll("[^a-zA-Z0-9.]", "");
+                        input = input.trim().replaceAll("[^a-zA-Z0-9.]", "");
                         Data.inventory.get(row).setSalePrice(Double.parseDouble(input));
                         writer.updateInventory();
                     } catch (ClassCastException | NumberFormatException ex) {

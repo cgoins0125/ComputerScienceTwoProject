@@ -34,5 +34,5 @@ public class Supplier extends ThirdParty {
 Additional ideas:
 Bills from supplier 
 Payment due to supplier 
-Payment supplier recieved.
+Payment supplier received.
 */

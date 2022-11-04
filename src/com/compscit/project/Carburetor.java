@@ -31,12 +31,12 @@ public class Carburetor extends Stock{
 
     private boolean stockIsCarb() {
         int itemId = 0;
-        for (int i = 0; i < requiredStock.length; i++) {
-            itemId = requiredStock[i][0];
+        for (int[] ints : requiredStock) {
+            itemId = ints[0];
             for (Stock item : inventory) {
                 if (itemId == item.getItemId()) {
                     if (item instanceof Carburetor) return true;
-                break;
+                    break;
                 }
             }
         }
@@ -49,9 +49,9 @@ public class Carburetor extends Stock{
         double total = 0;
         double itemPrice = 0;
         int itemId = 0;
-        for (int i = 0; i < requiredStock.length; i++) {
-            itemId = requiredStock[i][0];
-            quantity = requiredStock[i][1];
+        for (int[] ints : requiredStock) {
+            itemId = ints[0];
+            quantity = ints[1];
             //compare itemId to inventory to get price. Multiply price by
             // quantity and sum to total.
             for (Stock item : inventory) {
@@ -61,7 +61,7 @@ public class Carburetor extends Stock{
                     break;
                 }
             }
-            total += (itemPrice*quantity);
+            total += (itemPrice * quantity);
         }
         return total;
     }
@@ -99,9 +99,9 @@ public class Carburetor extends Stock{
             int neededStockQuantity = 0;
             int itemId = 0;
             int index = 0;
-            for (int i = 0; i < requiredStock.length; i++) {
-                itemId = requiredStock[i][0];
-                neededStockQuantity = requiredStock[i][1];
+            for (int[] ints : requiredStock) {
+                itemId = ints[0];
+                neededStockQuantity = ints[1];
                 for (Stock item : inventory) {
                     if (itemId == item.getItemId()) {
                         index = inventory.indexOf(item);
@@ -118,21 +118,21 @@ public class Carburetor extends Stock{
 
     //returns list of String values showing the quantity of items needed, itemName, and itemId
     public String getItemsRequiredToMake() {
-        String requiredItems = "Item ID | Item Name | Needed Quantity \n";
+        StringBuilder requiredItems = new StringBuilder("Item ID | Item Name | Needed Quantity \n");
         int itemId = 0;
         int neededStockQuantity = 0;
-        for (int i = 0; i < requiredStock.length; i++) {
-            itemId = requiredStock[i][0];
-            neededStockQuantity = requiredStock[i][1];
+        for (int[] ints : requiredStock) {
+            itemId = ints[0];
+            neededStockQuantity = ints[1];
             for (Stock item : inventory) {
                 if (itemId == item.getItemId()) {
-                    requiredItems += itemId + " | " + item.getItemName().toUpperCase() + " | " + neededStockQuantity + "\n";
+                    requiredItems.append(itemId).append(" | ").append(item.getItemName().toUpperCase()).append(" | ").append(neededStockQuantity).append("\n");
                     //breaks out of for loop once item is found
                     break;
                 }
             }
         }
-        return requiredItems;
+        return requiredItems.toString();
     }
 
     @Override
