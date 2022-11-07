@@ -6,10 +6,7 @@ import com.compscit.project.User;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+import java.awt.event.*;
 
 public class NewAccountPage implements ActionListener {
 
@@ -27,13 +24,54 @@ public class NewAccountPage implements ActionListener {
         writer = new CSVWriter();
         createFocusListeners();
         createActionListeners();
-        newAccountFrame = new JFrame();
+        createWindowListener();
         newAccountFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         newAccountFrame.setLocation(p);
         newAccountFrame.setContentPane(rootPanel);
         newAccountFrame.pack();
         newAccountFrame.setVisible(true);
     }
+
+    private void createWindowListener() {
+        newAccountFrame = new JFrame();
+        newAccountFrame.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                 LoginPage lp = new LoginPage(newAccountFrame.getLocation());
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
+            }
+        });
+    }
+
     private void createFocusListeners() {
         firstNameTextField.addFocusListener(new FocusListener() {
             @Override

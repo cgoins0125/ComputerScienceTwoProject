@@ -56,6 +56,18 @@ public class SalesReport implements Comparable<SalesReport>{
     }
 
     @Override
+    public String toString() {
+        return getSaleId() + ","
+                + getCustomerId() + ","
+                + getSubtotal() + ","
+                + getSalesTax() + ","
+                + getTotalSale() + ","
+                + getCostExpenditure() + ","
+                + getProfit() + ","
+                + getSellDate() + ',';
+    }
+
+    @Override
     public int compareTo(SalesReport o) {
             if (this.saleId < o.saleId) return -1;
             else if (this.saleId > o.saleId) return 1;

@@ -349,7 +349,8 @@ public class SalesPage implements ActionListener {
         }
 
         if (e.getSource() == newSaleButton) {
-            //NEW SALES!!
+            NewSalePage sp = new NewSalePage(salesFrame.getLocation());
+            salesFrame.dispose();
         }
 
     }

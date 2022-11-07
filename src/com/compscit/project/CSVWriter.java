@@ -35,8 +35,16 @@ public class CSVWriter {
      * Concatenates data from the ArrayList<Sale> sales to fileContents
      * Stores fileContents in a CSV file: "sales.txt"
      */
-    public void updateSales(Sale sale) {
-        StringBuilder fileContents = new StringBuilder();
+    public void updateSales() {
+        try (FileWriter salesWriter = new FileWriter("sales.txt")) {
+            salesWriter.write("receiptId, customerId, subtotal, salesTax, totalSale, costExpenditure, profit, sellMade,");
+            for (SalesReport sale : Data.sales) {
+                salesWriter.write("\n" + sale.toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        /*StringBuilder fileContents = new StringBuilder();
         File salesFile = new File("sales.txt");
         try (Scanner in = new Scanner(salesFile)) {
             //don't want the first line if it exists
@@ -53,7 +61,7 @@ public class CSVWriter {
             salesWriter.write("\n" + sale.toString());
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     /**

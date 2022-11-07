@@ -1,5 +1,7 @@
 package com.compscit.project;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -124,15 +126,25 @@ public class Receipt {
     }
 
     /**
-     * Prints a receipt for the customer
+     * opens the receipt for the sale, or displays where the file path where the receipt is saved.
      */
     private void printReceipt() {
-        if (System.getProperty("os.name").startsWith("Windows")) {
-            System.out.println("Receipt can be printed from " + receiptPath.getAbsolutePath() + "\\" + receiptFileName);
-        } else {
-            System.out.println("Receipt can be printed from " + receiptPath.getAbsolutePath() + "/" + receiptFileName);
+        //some desktops to supported by the Desktop class
+        if (Desktop.isDesktopSupported()) {
+            Desktop desktop = Desktop.getDesktop();
+            if (System.getProperty("os.name").startsWith("Windows")) {
+                File windowsReceipt = new File(receiptPath.getAbsolutePath() + "\\" + receiptFileName);
+                try {
+                    desktop.open(windowsReceipt);
+                } catch (IOException e) {
+                }
+            } else { //for mac
+                File macReceipt = new File(receiptPath.getAbsolutePath() + "/" + receiptFileName);
+                try {
+                    desktop.open(macReceipt);
+                } catch (IOException e) {
+                }
+            }
         }
     }
-
-
 }

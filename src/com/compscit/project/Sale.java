@@ -1,5 +1,6 @@
 package com.compscit.project;
 
+import javax.swing.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -13,25 +14,14 @@ import java.util.Calendar;
 
 public class Sale {
 
+    public static DecimalFormat df = new DecimalFormat("#.##");
     private static final double TAX_AMOUNT = 0.09;
     private static ArrayList<Stock> inventory = Data.inventory;
-    private static int saleCount = 0; //we want this to update at the start of the program.
-    private static DecimalFormat df = new DecimalFormat("#.##");
+    private int saleCount;
     private int[][] soldItemId_quantity;
     private int customerId;
     private String date;
     private int saleId;
-
-
-/**
- * This constructor should be used to initialize the static variables of the sale class before any other sale is completed
- * @param saleCount the int value static this.saleCount should start at when the program starts
- *                  based on how many sales have been completed in previous life cycles of the program
- */
-    public Sale (int saleCount) {
-        //subtracting one because it gets added back before the next sale is completed
-        this.saleCount = saleCount;
-    }
 
     //Instead of printing "There are not enough resources to complete sale", we should consider throwing a custom exception
     //we can do this during integration of GUI to best fit the GUIs needs
@@ -43,14 +33,15 @@ public class Sale {
      *                            each row should represent a distinct item being sold
      */
     public Sale (int customerId, int[][] soldItemId_quantity) {
+        saleCount = Data.sales.size()+1;
         this.soldItemId_quantity = soldItemId_quantity;
-        if (saleable()) {
-            setDate();
-            updateStock();
-            this.customerId = customerId;
-            saleId = generateSaleId();
-        }
-        else System.out.println("There are not enough resources to complete sale");
+        setDate();
+        updateStock();
+        this.customerId = customerId;
+        saleId = generateSaleId();
+        Data.sales.add(new SalesReport(saleId,customerId,getSubtotal(),getTax(),
+                getTotal(),getCostExpenditure(),getProfit(),getDate()));
+        Receipt receipt = new Receipt(this);
     }
 
     /**
@@ -68,27 +59,6 @@ public class Sale {
      */
     public int[][] getSoldItemId_quantity() {
         return soldItemId_quantity;
-    }
-
-    /**
-     * checks that there are enough resources to initiate the sale
-     * @return true if there are enough resources to complete sale
-     */
-    private boolean saleable() {
-        int itemId = 0;
-        int quantity = 1;
-        for (int[] ints : soldItemId_quantity) {
-            itemId = ints[0];
-            quantity = ints[1];
-            for (Stock item : inventory) {
-                if (itemId == item.getItemId()) {
-                    //returns false if there is an item in the sale not in the inventory
-                    if (item.getQuantityOnHand() < quantity) return false;
-                }
-            }
-        }
-        //returns true once all items have been checked
-        return true;
     }
 
     /**

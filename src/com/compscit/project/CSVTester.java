@@ -1,8 +1,10 @@
 package com.compscit.project;
 
 import com.compscit.project.ui.LoginPage;
+import com.compscit.project.ui.NewSalePage;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class CSVTester {
 
@@ -10,12 +12,14 @@ public class CSVTester {
 
         CSVReader reader = new CSVReader();
 
-        SwingUtilities.invokeLater(new Runnable() {
+        /*SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 LoginPage lp = new LoginPage();
             }
-        });
+        });*/
+
+        NewSalePage nsp = new NewSalePage(new Point(425,220));
 
     }
 

@@ -1,6 +1,5 @@
 ItemId,ItemName,Quantity,CostExpenditure,SalePrice,
 1,peanuts,9876,15.0,15.0,
 5,hot dog,7900,5.0,10.0,
-14,eggs,755809,0.99,2.99,
 15,peaches,67345,15.0,15.0,
 16,flour,74645,2.0,5.0,

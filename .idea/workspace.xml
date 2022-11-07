@@ -1,30 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8bc66100-bccf-4f0b-81fe-cf85c419d113" name="Changes" comment="first commit">
+    <list default="true" id="8bc66100-bccf-4f0b-81fe-cf85c419d113" name="Changes" comment="Deleted Login Attempt Class">
       <change afterPath="$PROJECT_DIR$/receiptPath.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewSupplierWindow.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewSupplierWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/compscit/project/CartItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewSalePage.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewSalePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/customers.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/inventory.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sales.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sales.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/compscit/project/CSVReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/CSVReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/compscit/project/CSVTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/CSVTester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/compscit/project/CSVWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/CSVWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/Carburetor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Carburetor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/compscit/project/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Receipt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ReceiptPathSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ReceiptPathSelector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/compscit/project/Sale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Sale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Supplier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ThirdParty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ThirdParty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/AddStockWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/AddStockWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/CustomersPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/CustomersPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/SalesReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/SalesReport.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/NewAccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewAccountPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/NewCustomerWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewCustomerWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/SalesPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/SalesPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/StockPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/StockPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/SuppliersPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/SuppliersPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/suppliers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/suppliers.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +27,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="UML Sequence" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -67,7 +60,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "136",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "134",
     "last_opened_file_path": "/Users/caseygoins/Documents/Developer/ComputerScienceTwoProject/src/com/compscit/project",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
@@ -91,34 +84,11 @@
       <recent name="$PROJECT_DIR$/src/com/compsci2/project" />
       <recent name="$PROJECT_DIR$/src/com/compsci2/ui" />
     </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.compscit.project.ui" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.com.compscit.project.CSVTester">
-    <configuration name="CSVTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.compsci2.project.CSVTester" />
-      <module name="ComputerScienceTwoProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.compsci2.project.NewCustomerWindow" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.compsci2.project.Main" />
-      <module name="ComputerScienceTwoProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.compsci2.project.NewCustomerWindow" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="com.compscit.project.CSVTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.compscit.project.CSVTester" />
       <module name="ComputerScienceTwoProject" />
@@ -135,8 +105,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.com.compscit.project.CSVTester" />
-        <item itemvalue="Application.CSVTester" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -170,7 +138,21 @@
       <option name="project" value="LOCAL" />
       <updated>1667573758348</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="more robust error checking, fixed a few errors">
+      <created>1667580479797</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667580479797</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Deleted Login Attempt Class">
+      <created>1667581424017</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1667581424017</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,7 +169,9 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="more robust error checking, fixed a few errors" />
+    <MESSAGE value="Deleted Login Attempt Class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted Login Attempt Class" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

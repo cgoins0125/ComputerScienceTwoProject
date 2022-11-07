@@ -53,10 +53,9 @@ public class CSVReader {
     }
 
     /**
-     * the following is for selecting a path to store digital receipts
-     * only asks for you to do this if a path has not been previously selected
-     * @return path the path chosen by the user the first time program runs subsequent program runs scans the path from
-     * the .txt file receiptPath
+     * asks user to select a new path if one has not already been chosen
+     * if a path has been chosen, returns the stored path
+     * @return path the path chosen by the user scans from the .txt file "receiptPath"
      */
     public String getReceiptPath() {
         String path = "";

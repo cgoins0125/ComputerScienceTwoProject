@@ -35,7 +35,7 @@ public class StockPage implements ActionListener {
         writer = new CSVWriter();
         createFocusListeners();
         createActionListeners();
-        createTable();
+        createInventoryTable();
         createTableModelListener();
         stockFrame = new JFrame();
         stockFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,7 +45,7 @@ public class StockPage implements ActionListener {
         stockFrame.setVisible(true);
     }
 
-    private void createTable() {
+    private void createInventoryTable() {
         //This creates the table model by getting the data from the ArrayList inventory and storing it in a tabla
         String[] inventoryHeader = {"Id", "Name", "Quantity", "Cost", "Sale Price"};
         Object[][] data = new Object[Data.inventory.size()][5];
@@ -182,7 +182,7 @@ public class StockPage implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         //for getting a new page and closing the one that is clicked on
         if (e.getSource() == inventoryButton) {
-            createTable();
+            createInventoryTable();
         }
 
         if (e.getSource() == suppliersButton) {
@@ -230,7 +230,7 @@ public class StockPage implements ActionListener {
                     }
                     Data.inventory.remove(index);
                     writer.updateInventory();
-                    createTable();
+                    createInventoryTable();
                 }
             }
         }
