@@ -1,23 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8bc66100-bccf-4f0b-81fe-cf85c419d113" name="Changes" comment="Deleted Login Attempt Class">
-      <change afterPath="$PROJECT_DIR$/receiptPath.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/compscit/project/CartItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewSalePage.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewSalePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/inventory.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sales.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sales.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/CSVReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/CSVReader.java" afterDir="false" />
+    <list default="true" id="8bc66100-bccf-4f0b-81fe-cf85c419d113" name="Changes" comment="Minimum requirements done!!">
       <change beforePath="$PROJECT_DIR$/src/com/compscit/project/CSVTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/CSVTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/CSVWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/CSVWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Receipt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/Sale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/Sale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/SalesReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/SalesReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/NewAccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewAccountPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/SalesPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/SalesPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/StockPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/StockPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667581424017</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Minimum requirements done!!">
+      <created>1667841959191</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667841959191</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,7 +163,8 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="more robust error checking, fixed a few errors" />
     <MESSAGE value="Deleted Login Attempt Class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deleted Login Attempt Class" />
+    <MESSAGE value="Minimum requirements done!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minimum requirements done!!" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
