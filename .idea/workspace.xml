@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8bc66100-bccf-4f0b-81fe-cf85c419d113" name="Changes" comment="no .txt files to start program">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/NewSalePage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewSalePage.form" afterDir="false" />
+    <list default="true" id="8bc66100-bccf-4f0b-81fe-cf85c419d113" name="Changes" comment="Cosmetic Changes">
+      <change afterPath="$PROJECT_DIR$/customers.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/receiptPath.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sales.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/suppliers.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/NewSalePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewSalePage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -167,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667843178013</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Cosmetic Changes">
+      <created>1667843926230</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1667843926230</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -190,7 +201,8 @@
     <MESSAGE value="Opens Login Page" />
     <MESSAGE value="Requires a path to be selected to close out of ReceiptPathSelector" />
     <MESSAGE value="no .txt files to start program" />
-    <option name="LAST_COMMIT_MESSAGE" value="no .txt files to start program" />
+    <MESSAGE value="Cosmetic Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cosmetic Changes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

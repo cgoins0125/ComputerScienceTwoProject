@@ -262,21 +262,6 @@ public class NewSalePage implements ActionListener {
 
     }
 
-    private void createSale(int customerId) {
-        int[][] saleItemId_quantity = new int[cart.size()][2];
-        int i = 0;
-        for (CartItem item : cart) {
-            saleItemId_quantity[i][0] = item.getItemId();
-            saleItemId_quantity[i][1] = item.getQuantity();
-            i++;
-        }
-        Sale newSale = new Sale(customerId,saleItemId_quantity);
-        writer.updateSales();
-        cart.clear();
-        createCartTable();
-        createInventoryTable();
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -343,15 +328,32 @@ public class NewSalePage implements ActionListener {
         }
 
         if (e.getSource() == removeFromCartButton) {
-            int row = cartTable.getSelectedRow();
-            cart.remove(row);
-            createCartTable();
+            if (cartTable.getSelectedRow() != -1) {
+                int row = cartTable.getSelectedRow();
+                cart.remove(row);
+                createCartTable();
+            }
         }
 
         if (e.getSource() == clearCartButton) {
             cart.clear();
             createCartTable();
         }
+    }
+
+    private void createSale(int customerId) {
+        int[][] saleItemId_quantity = new int[cart.size()][2];
+        int i = 0;
+        for (CartItem item : cart) {
+            saleItemId_quantity[i][0] = item.getItemId();
+            saleItemId_quantity[i][1] = item.getQuantity();
+            i++;
+        }
+        Sale newSale = new Sale(customerId,saleItemId_quantity);
+        writer.updateSales();
+        cart.clear();
+        createCartTable();
+        createInventoryTable();
     }
 
 

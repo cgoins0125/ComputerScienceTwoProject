@@ -1,0 +1,1 @@
+receiptId, customerId, subtotal, salesTax, totalSale, costExpenditure, profit, sellDate,
