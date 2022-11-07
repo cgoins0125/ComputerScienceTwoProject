@@ -12,8 +12,11 @@ public class ReceiptPathSelector {
             JOptionPane.showMessageDialog(new JFrame(), "Please select where you would like\n" +
                     "to store digital copies of receipts");
             int option = jfc.showOpenDialog(null);
-            receiptPath = jfc.getSelectedFile().getAbsolutePath();
-
+            try {
+                receiptPath = jfc.getSelectedFile().getAbsolutePath();
+            } catch (NullPointerException ex) {
+                ReceiptPathSelector rcp = new ReceiptPathSelector();
+            }
         }
 
         public String getReceiptPath() {
