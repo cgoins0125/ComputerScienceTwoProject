@@ -148,7 +148,7 @@ public class NewSalePage implements ActionListener {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 String text = searchTextField.getText();
-                if (text.trim().length() == 0 || text.equals("Search")) {
+                if (text.trim().length() == 0 || text.equals("Search Inventory")) {
                     rowSorter.setRowFilter(null);
                 } else {
                     rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));

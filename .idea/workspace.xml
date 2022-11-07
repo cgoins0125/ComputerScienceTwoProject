@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8bc66100-bccf-4f0b-81fe-cf85c419d113" name="Changes" comment="Requires a path to be selected to close out of ReceiptPathSelector">
-      <change afterPath="$PROJECT_DIR$/receiptPath.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/customers.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/inventory.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sales.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sales.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/CSVTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/CSVTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/suppliers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/suppliers.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/users.txt" afterDir="false" />
+    <list default="true" id="8bc66100-bccf-4f0b-81fe-cf85c419d113" name="Changes" comment="no .txt files to start program">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/NewSalePage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewSalePage.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/compscit/project/ui/NewSalePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/compscit/project/ui/NewSalePage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667842990627</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="no .txt files to start program">
+      <created>1667843178013</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1667843178013</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -186,7 +189,8 @@
     <MESSAGE value="Minimum requirements done!!" />
     <MESSAGE value="Opens Login Page" />
     <MESSAGE value="Requires a path to be selected to close out of ReceiptPathSelector" />
-    <option name="LAST_COMMIT_MESSAGE" value="Requires a path to be selected to close out of ReceiptPathSelector" />
+    <MESSAGE value="no .txt files to start program" />
+    <option name="LAST_COMMIT_MESSAGE" value="no .txt files to start program" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
