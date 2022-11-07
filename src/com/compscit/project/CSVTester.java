@@ -1,10 +1,8 @@
 package com.compscit.project;
 
 import com.compscit.project.ui.LoginPage;
-import com.compscit.project.ui.NewSalePage;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class CSVTester {
 
