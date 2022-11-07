@@ -1,1 +1,0 @@
-ID, Customer Name, Email, Phone Number, Address, City, State, Zip Code,
