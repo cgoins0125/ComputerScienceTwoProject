@@ -22,27 +22,19 @@ public class AddStockWindow implements ActionListener {
     private JTextField salePriceTextField;
     private JButton addStockButton;
     private CSVWriter writer;
+    private StockPage sp;
 
     public AddStockWindow(Point p) {
+        sp = new StockPage(p);
         writer = new CSVWriter();
         createFocusListeners();
         createActionListeners();
         addStockFrame = new JFrame();
-        createWindowListener();
         addStockFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         addStockFrame.setLocationRelativeTo(null);
         addStockFrame.setContentPane(rootPanel);
         addStockFrame.pack();
         addStockFrame.setVisible(true);
-    }
-
-    private void createWindowListener() {
-        addStockFrame.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                StockPage sp = new StockPage(new Point(425,225));
-            }
-        });
     }
 
     //Focus listeners are for when text boxes are clicked on
@@ -128,6 +120,7 @@ public class AddStockWindow implements ActionListener {
             } catch (NumberFormatException | InputMismatchException ex) {
                 JOptionPane.showMessageDialog(null, "Invalid Input","",JOptionPane.ERROR_MESSAGE);
             } finally {
+                sp.createInventoryTable();
                 itemNameTextField.setText("Item Name");
                 quantityTextField.setText("Quantity");
                 costExpenditureTextField.setText("Cost");

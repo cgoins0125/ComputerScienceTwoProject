@@ -3,6 +3,7 @@ package com.compscit.project;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -61,14 +62,23 @@ public class CSVReader {
         String path = "";
         File receiptPath = new File("receiptPath.txt");
         try (Scanner in = new Scanner(receiptPath)) {
-            path = in.nextLine();
+            if (in.hasNext()) path = in.nextLine();
+            else {
+                ReceiptPathSelector rps = new ReceiptPathSelector();
+                path = rps.getReceiptPath();
+                try (FileWriter fw = new FileWriter("receiptPath.txt")) {
+                    fw.write(path);
+                } catch (IOException | NullPointerException ex) {
+                    getReceiptPath();
+                }
+            }
         } catch (FileNotFoundException e) {
             ReceiptPathSelector rps = new ReceiptPathSelector();
             path = rps.getReceiptPath();
             try (FileWriter fw = new FileWriter("receiptPath.txt")) {
                 fw.write(path);
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
+            } catch (IOException | NullPointerException ex) {
+                getReceiptPath();
             }
         }
         return path;

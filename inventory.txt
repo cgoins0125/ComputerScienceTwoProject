@@ -1,0 +1,7 @@
+ItemId,ItemName,Quantity,CostExpenditure,SalePrice,
+1,test,100,10.0,15.0,
+2,tes133,15,15.0,20.0,
+3,test2,98,10.0,15.0,
+4,test3,100000,5.0,10.0,
+5,pears,5000,5.0,10.0,
+6,peches,1000000,56.0,90.0,

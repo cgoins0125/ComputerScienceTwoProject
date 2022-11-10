@@ -45,7 +45,7 @@ public class StockPage implements ActionListener {
         stockFrame.setVisible(true);
     }
 
-    private void createInventoryTable() {
+    public void createInventoryTable() {
         //This creates the table model by getting the data from the ArrayList inventory and storing it in a tabla
         String[] inventoryHeader = {"Id", "Name", "Quantity", "Cost", "Sale Price"};
         Object[][] data = new Object[Data.inventory.size()][5];
