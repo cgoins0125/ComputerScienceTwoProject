@@ -1,5 +1,5 @@
 ID, BusinessName, Email, Phone Number, Address, City, State, Zip Code,
 1, Cooks Pest Control, cgoins0125@gmail.com, null, null,
 2, Chattanooga Whiskey, Chattwhiskey@gmail.com, 423-333-4444, Riverfront dr,chatt,Tennessee,37411,
-3, Hutton  Smith brewing company, hutton&smithbrewing@gmail.com, 423-333-5555, null,
+3, Hutton  Smith brewing company, hutton&smithbrewing@gmail.com, 423-233-2211, null,
 4, Rock City Merch, rockcitymerch@gmail.com, 423-333-4444, null,

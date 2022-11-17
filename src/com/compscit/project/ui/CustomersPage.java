@@ -40,7 +40,6 @@ public class CustomersPage implements ActionListener {
         createFocusListeners();
         createActionListeners();
         createTable();
-        createTableModelListener();
         customersFrame = new JFrame();
         customersFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         customersFrame.setContentPane(rootPanel);
@@ -117,6 +116,8 @@ public class CustomersPage implements ActionListener {
             }
         });
 
+        createTableModelListener();
+
     }
 
     private void createTableModelListener() {
@@ -129,6 +130,7 @@ public class CustomersPage implements ActionListener {
                 //Do not allow changes to ID number when column == 0
                 if (column == 0) {
                     JOptionPane.showMessageDialog(null, "ID NUMBER CAN NOT BE MODIFIED \nTHE CHANGE WILL NOT BE SAVED", "", JOptionPane.ERROR_MESSAGE);
+                    createTable();
 
                 } else if (column == 1) { //name
                     String name = ((String)tableModel.getValueAt(row, column)).trim();
@@ -136,12 +138,14 @@ public class CustomersPage implements ActionListener {
                     try {
                         if (name.contains(",")) {
                             JOptionPane.showMessageDialog(null, "Field can not contain commas", "", JOptionPane.ERROR_MESSAGE);
+                            createTable();
                         } else {
                             Data.customers.get(row).setName(name);
                             writer.updateCustomers();
                         }
                     } catch (NullPointerException ex) {
                         JOptionPane.showMessageDialog(null, "Name should not be null", "", JOptionPane.ERROR_MESSAGE);
+                        createTable();
                     }
 
                 } else if (column == 2) { //email
@@ -150,6 +154,7 @@ public class CustomersPage implements ActionListener {
                     try {
                         if (email.contains(",")) {
                             JOptionPane.showMessageDialog(null, "Field can not contain commas", "", JOptionPane.ERROR_MESSAGE);
+                            createTable();
                         } else {
                             Data.customers.get(row).setEmail(email);
                             writer.updateCustomers();
@@ -161,7 +166,6 @@ public class CustomersPage implements ActionListener {
 
                 } else if (column == 3) { //phone number
                     String phoneNumber = ((String)tableModel.getValueAt(row, column)).trim();
-                    phoneNumber = phoneNumber.replaceAll("[^0-9-,]", "");
                     try (Scanner in = new Scanner(phoneNumber)) {
                         if (phoneNumber.isBlank()) throw new NullPointerException();
                         in.useDelimiter("-");
@@ -172,22 +176,23 @@ public class CustomersPage implements ActionListener {
                         }
                         if (i != 3 || phoneNumber.length() != 12 || phoneNumber.charAt(3) != '-' || phoneNumber.charAt(7) != '-') {
                             JOptionPane.showMessageDialog(null, "Phone Number format should follow ###-###-####", "", JOptionPane.ERROR_MESSAGE);
+                            createTable();
                         } else {
                             if (phoneNumber.contains(",")) {
                                 JOptionPane.showMessageDialog(null, "Field can not contain commas", "", JOptionPane.ERROR_MESSAGE);
+                                createTable();
                             } else {
-                                Data.customers.get(row).setPhoneNumber(phoneNumber);
-                                writer.updateCustomers();
+                                Data.suppliers.get(row).setPhoneNumber(phoneNumber);
+                                writer.updateSuppliers();
                             }
                         }
-                    } catch(NullPointerException ex) {
-                            Data.customers.get(row).setPhoneNumber(null);
-                            writer.updateCustomers();
-                        }
+                    } catch (NullPointerException ex) {
+                        Data.suppliers.get(row).setPhoneNumber(null);
+                        writer.updateSuppliers();
+                    }
 
                 } else if (column == 4) { //address
                     String address = ((String) tableModel.getValueAt(row, column)).trim();
-                    address = address.replaceAll("[^A-Za-z0-9,.#]", "");
                     try (Scanner in = new Scanner(address)) {
                         if (address.isBlank()) throw new NullPointerException();
                         in.useDelimiter(",");
@@ -197,7 +202,9 @@ public class CustomersPage implements ActionListener {
                             in.next();
                         }
                         if (i != 4) { // 1) street address apt number, 2) city, 3) state, 4) zip code
-                            JOptionPane.showMessageDialog(null, "Check that the address is formatted properly", "", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Check that the address is formatted properly \n" +
+                                    "Street address, City, State, Zip Code", "", JOptionPane.ERROR_MESSAGE);
+                            createTable();
                         } else Data.customers.get(row).setAddress(address);
                         writer.updateCustomers();
                     } catch (NullPointerException ex) {
