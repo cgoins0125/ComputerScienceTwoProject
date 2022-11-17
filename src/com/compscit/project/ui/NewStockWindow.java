@@ -106,6 +106,9 @@ public class NewStockWindow implements ActionListener {
                 double sale = Double.parseDouble(salePriceTextField.getText()
                         .trim().replaceAll("[^a-zA-Z0-9.]", ""));
                 String name = itemNameTextField.getText();
+                if (name.contains(",")) {
+                    throw new InputMismatchException();
+                }
                 int quantity = 0;
                 if (quantityTextField.getText().contains(".")) {
                     throw new NumberFormatException();
@@ -113,7 +116,7 @@ public class NewStockWindow implements ActionListener {
                     throw new InputMismatchException();
                 } else {
                     quantity = Integer.parseInt(quantityTextField.getText().trim().replaceAll("[^a-zA-Z0-9]", ""));
-                    name = name.toLowerCase().trim().replaceAll(",", "");
+                    name = name.toLowerCase().trim();
                     Data.inventory.add(new Stock(name, quantity, cost, sale));
                     writer.updateInventory();
                 }
