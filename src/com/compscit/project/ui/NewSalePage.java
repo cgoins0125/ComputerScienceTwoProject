@@ -351,6 +351,7 @@ public class NewSalePage implements ActionListener {
         }
         Sale newSale = new Sale(customerId,saleItemId_quantity);
         writer.updateSales();
+        writer.updateInventory();
         cart.clear();
         createCartTable();
         createInventoryTable();
