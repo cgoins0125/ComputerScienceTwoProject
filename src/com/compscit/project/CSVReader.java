@@ -3,7 +3,6 @@ package com.compscit.project;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -58,7 +57,7 @@ public class CSVReader {
      * if a path has been chosen, returns the stored path
      * @return path the path chosen by the user scans from the .txt file "receiptPath"
      */
-    public String getReceiptPath() {
+    private String getReceiptPath() {
         String path = "";
         File receiptPath = new File("receiptPath.txt");
         try (Scanner in = new Scanner(receiptPath)) {

@@ -1,3 +1,4 @@
 username,password,first name,last name,
 hanadi123,test123,Hanadi,Mohamed,
 cgoins0125,password,Casey,Goins,
+clholland,classy,cec,Holland,

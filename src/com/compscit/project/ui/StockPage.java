@@ -211,7 +211,7 @@ public class StockPage implements ActionListener {
         }
 
         if (e.getSource() == newButton) {
-            AddStockWindow sw = new AddStockWindow(stockFrame.getLocation());
+            NewStockWindow sw = new NewStockWindow(stockFrame.getLocation());
             stockFrame.dispose();
         }
 

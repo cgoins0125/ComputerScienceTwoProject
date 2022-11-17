@@ -1,5 +1,9 @@
 package com.compscit.project;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class SalesReport implements Comparable<SalesReport>{
 
     private final int saleId;
@@ -54,6 +58,24 @@ public class SalesReport implements Comparable<SalesReport>{
     public String getSellDate() {
         return sellDate;
     }
+
+    public boolean inDateRange(int fromMonth, int fromDay, int fromYear, int toMonth, int toDay, int toYear) throws ParseException {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        Date fromDate = sdf.parse(fromMonth+"/"+fromDay+"/"+fromYear);
+        Date toDate = sdf.parse(toMonth+"/"+toDay+"/"+toYear);
+        Date sellDate = sdf.parse(this.sellDate);
+
+        if (fromDate.before(sellDate) && toDate.after(sellDate)) {
+            return true;
+        } if (fromDate.equals(sellDate)) {
+            return true;
+        } if (toDate.equals(sellDate)) {
+            return true;
+        }
+        else return false;
+    }
+
 
     @Override
     public String toString() {

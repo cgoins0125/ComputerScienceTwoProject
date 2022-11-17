@@ -12,7 +12,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.InputMismatchException;
 
-public class AddStockWindow implements ActionListener {
+public class NewStockWindow implements ActionListener {
 
     private JFrame addStockFrame;
     private JPanel rootPanel;
@@ -24,7 +24,7 @@ public class AddStockWindow implements ActionListener {
     private CSVWriter writer;
     private StockPage sp;
 
-    public AddStockWindow(Point p) {
+    public NewStockWindow(Point p) {
         sp = new StockPage(p);
         writer = new CSVWriter();
         createFocusListeners();

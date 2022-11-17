@@ -10,8 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.InputMismatchException;
 
 public class SalesPage implements ActionListener {
@@ -157,33 +157,14 @@ public class SalesPage implements ActionListener {
         }
 
         for (SalesReport sale : Data.sales) {
-
-            String sellDate = sale.getSellDate();
-            int sellMonth = Integer.parseInt(sellDate.substring(0, sellDate.indexOf("/")));
-            int sellDay = Integer.parseInt(sellDate.substring(sellDate.indexOf("/") + 1, sellDate.lastIndexOf("/")));
-            int sellYear = Integer.parseInt(sellDate.substring(sellDate.lastIndexOf("/") + 1));
-
-            if (sellYear > fromYear && sellYear < toYear) {
-                salesReport.add(sale);
-            } else if (sellYear == fromYear) {
-                if (sellMonth > fromMonth) {
+            try {
+                if (sale.inDateRange(fromMonth, fromDay, fromYear, toMonth, toDay, toYear)) {
                     salesReport.add(sale);
-                } else if (sellMonth == fromMonth) {
-                    if (sellDay > fromDay) {
-                        salesReport.add(sale);
-                    }
                 }
-            } else if (sellYear == toYear) {
-                if (sellMonth < toMonth) {
-                    salesReport.add(sale);
-                } else if (sellMonth == toMonth) {
-                    if (sellDay < toDay) {
-                        salesReport.add(sale);
-                    }
-                }
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
             }
         }
-        Collections.sort(salesReport);
 
         String[] salesHeader = {"Sale Id", "Customer Id", "Subtotal", "Sales Tax", "Total Sale", "Cost Expenditure", "Profit", "Sell Made"};
         Object[][] data = new Object[salesReport.size()][8];
