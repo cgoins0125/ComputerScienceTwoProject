@@ -24,7 +24,6 @@ public class UsersPage implements ActionListener {
     private JButton suppliersButton;
     private JButton logOutButton;
     private JTextField searchTextField;
-    private JButton newButton;
     private JButton deleteButton;
     private JTable usersTable;
     private JPanel rootPanel;
@@ -39,7 +38,6 @@ public class UsersPage implements ActionListener {
         createFocusListeners();
         createActionListeners();
         createTable();
-        createTableModelListener();
         usersFrame = new JFrame();
         usersFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         usersFrame.setVisible(true);
@@ -94,6 +92,7 @@ public class UsersPage implements ActionListener {
                 }
             });
 
+            createTableModelListener();
     }
 
     private void createTableModelListener() {
@@ -104,16 +103,31 @@ public class UsersPage implements ActionListener {
                 int column = e.getColumn();
                 if (column == 0) {
                     JOptionPane.showMessageDialog(null, "USERNAME CAN NOT BE MODIFIED \nTHE CHANGE WILL NOT BE SAVED","",JOptionPane.ERROR_MESSAGE);
+                    createTable();
                 }
                 //Do not allow changes to ID number when column == 0 *changes can be made but will not be saved - unless we can prevent them
                 if (column == 1) { //first name
-                    Data.users.get(row).setFirstName((String)tableModel.getValueAt(row, column));
-                    writer.updateUsers();
+                    String firstName = ((String)tableModel.getValueAt(row, column)).trim();
+                    if (firstName.contains(",")) {
+                        JOptionPane.showMessageDialog(null, "Field can not contain commas", "", JOptionPane.ERROR_MESSAGE);
+                        createTable();
+                    }
+                    else {
+                        Data.users.get(row).setFirstName(firstName);
+                        writer.updateUsers();
+                    }
                 }
 
                 else if (column == 2) { //last name
-                    Data.users.get(row).setLastName((String) tableModel.getValueAt(row, column));
-                    writer.updateUsers();
+                    String lastName = ((String) tableModel.getValueAt(row, column)).trim();
+                    if (lastName.contains(",")) {
+                        JOptionPane.showMessageDialog(null, "Field can not contain commas", "", JOptionPane.ERROR_MESSAGE);
+                        createTable();
+                    }
+                    else {
+                        Data.users.get(row).setLastName(lastName);
+                        writer.updateUsers();
+                    }
                 }
             }
         });
