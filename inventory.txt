@@ -1,5 +1,5 @@
 ItemId,ItemName,Quantity,CostExpenditure,SalePrice,
-1,coffee mug,35,3.0,15.0,
+1,coffee mug,35,3.0,12.0,
 2,rockcity t-shirt,40,5.0,25.0,
 3,stuffed animal,35,8.0,25.0,
 4,rubyfalls keychain,60,2.0,4.0,

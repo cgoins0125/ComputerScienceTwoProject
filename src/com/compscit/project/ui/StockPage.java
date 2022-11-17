@@ -36,7 +36,6 @@ public class StockPage implements ActionListener {
         createFocusListeners();
         createActionListeners();
         createInventoryTable();
-        createTableModelListener();
         stockFrame = new JFrame();
         stockFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         stockFrame.setLocation(p);
@@ -93,6 +92,8 @@ public class StockPage implements ActionListener {
             }
         });
 
+        createTableModelListener();
+
     }
 
     private void createTableModelListener() {
@@ -103,12 +104,18 @@ public class StockPage implements ActionListener {
                 int column = e.getColumn();
                 if (column == 0) {
                     JOptionPane.showMessageDialog(null, "ITEM ID CAN NOT BE MODIFIED \nTHE CHANGE WILL NOT BE SAVED","",JOptionPane.ERROR_MESSAGE);
+                    createInventoryTable();
                 }
                 //Do not allow changes to ID number when column == 0 *changes can be made but will not be saved - unless we can prevent them
                 if (column == 1) { //item name
                     String name = ((String)tableModel.getValueAt(row, column)).trim();
-                    if (name.isBlank()) JOptionPane.showMessageDialog(null, "ITEM NAME CANNOT BE NULL","",JOptionPane.ERROR_MESSAGE);
-                    else {
+                    if (name.contains(",")) {
+                        JOptionPane.showMessageDialog(null, "ITEM NAME CANNOT CONTAIN COMMAS","",JOptionPane.ERROR_MESSAGE);
+                        createInventoryTable();
+                    } else if (name.isBlank()) {
+                        JOptionPane.showMessageDialog(null, "ITEM NAME CANNOT BE NULL","",JOptionPane.ERROR_MESSAGE);
+                        createInventoryTable();
+                    } else {
                         Data.inventory.get(row).setItemName(name);
                         writer.updateInventory();
                     }
@@ -117,33 +124,36 @@ public class StockPage implements ActionListener {
                 else if (column == 2) { //quantity
                     try {
                         String input = (String)tableModel.getValueAt(row,column);
-                        int quantity = Integer.parseInt(input.trim().replaceAll("[^a-zA-Z0-9.]", ""));
+                        int quantity = Integer.parseInt(input.trim());
                         Data.inventory.get(row).setQuantityOnHand(quantity);
                         writer.updateInventory();
                     } catch (ClassCastException | NumberFormatException ex) {
                         JOptionPane.showMessageDialog(null, "Invalid Input \nPlease enter a valid integer for quantity","",JOptionPane.ERROR_MESSAGE);
+                        createInventoryTable();
                     }
                 }
 
                 else if (column == 3) { //cost expenditure
                     try {
                         String input = (String)tableModel.getValueAt(row, column);
-                        input = input.trim().replaceAll("[^a-zA-Z0-9.]", "");
+                        input = input.trim();
                         Data.inventory.get(row).setCostExpenditure(Double.parseDouble(input));
                         writer.updateInventory();
                     } catch (ClassCastException | NumberFormatException ex) {
                         JOptionPane.showMessageDialog(null, "Invalid Input \nPlease enter a valid input for cost expenditure", "", JOptionPane.ERROR_MESSAGE);
+                        createInventoryTable();
                     }
                 }
 
                 else if (column == 4) { //sale price
                     try {
                         String input = (String)tableModel.getValueAt(row, column);
-                        input = input.trim().replaceAll("[^a-zA-Z0-9.]", "");
+                        input = input.trim();
                         Data.inventory.get(row).setSalePrice(Double.parseDouble(input));
                         writer.updateInventory();
                     } catch (ClassCastException | NumberFormatException ex) {
                         JOptionPane.showMessageDialog(null, "Invalid Input \nPlease enter a valid input for sale price", "", JOptionPane.ERROR_MESSAGE);
+                        createInventoryTable();
                     }
                 }
 
