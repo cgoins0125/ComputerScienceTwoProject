@@ -95,19 +95,26 @@ public class Receipt {
             quantitySold = ints[1];
             for (Stock item : Data.inventory) {
                 if (itemId == item.getItemId()) {
-                    receiptLine.append(quantitySold).append(" ").append(item.getItemName().toUpperCase());
-                    receiptLine.append(String.format("%25.2f", (item.getSalePrice() * quantitySold)));
+                    String itemName = item.getItemName().toUpperCase();
+                    int length = itemName.length();
+                    if (length > 25) {
+                        itemName = itemName.substring(0,25);
+                        length = 25;
+                    }
+
+                    receiptLine.append(quantitySold).append(" ").append(itemName);
+                    receiptLine.append(String.format("%" + (40-length) +".2f", (item.getSalePrice() * quantitySold)));
                     receiptLine.append("\n");
                     //breaks out of for loop once item is found
                     break;
                 }
             }
         }
-        receiptLine.append(String.format("Subtotal: %23.2f", sale.getSubtotal()));
+        receiptLine.append(String.format("Subtotal: %32.2f", sale.getSubtotal()));
         receiptLine.append("\n");
-        receiptLine.append(String.format("Tax: %28.2f", sale.getTax()));
+        receiptLine.append(String.format("Tax: %37.2f", sale.getTax()));
         receiptLine.append("\n");
-        receiptLine.append(String.format("Total: %26.2f", sale.getTotal()));
+        receiptLine.append(String.format("Total: %35.2f", sale.getTotal()));
         receiptLine.append("\n");
         return receiptLine.toString();
     }
