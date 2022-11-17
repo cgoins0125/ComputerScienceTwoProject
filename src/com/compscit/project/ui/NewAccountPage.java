@@ -25,7 +25,7 @@ public class NewAccountPage implements ActionListener {
         createFocusListeners();
         createActionListeners();
         createWindowListener();
-        newAccountFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        newAccountFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         newAccountFrame.setLocation(p);
         newAccountFrame.setContentPane(rootPanel);
         newAccountFrame.pack();
@@ -42,12 +42,12 @@ public class NewAccountPage implements ActionListener {
 
             @Override
             public void windowClosing(WindowEvent e) {
-                 LoginPage lp = new LoginPage(newAccountFrame.getLocation());
+
             }
 
             @Override
             public void windowClosed(WindowEvent e) {
-
+                LoginPage lp = new LoginPage(newAccountFrame.getLocation());
             }
 
             @Override
