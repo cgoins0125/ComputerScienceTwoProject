@@ -17,7 +17,6 @@ public class Sale {
     public static DecimalFormat df = new DecimalFormat("#.##");
     private static final double TAX_AMOUNT = 0.09;
     private static ArrayList<Stock> inventory = Data.inventory;
-    private int saleCount;
     private int[][] soldItemId_quantity;
     private int customerId;
     private String date;
@@ -33,25 +32,14 @@ public class Sale {
      *                            each row should represent a distinct item being sold
      */
     public Sale (int customerId, int[][] soldItemId_quantity) {
-        saleCount = Data.sales.size()+1;
+        saleId = Data.sales.size()+1;
         this.soldItemId_quantity = soldItemId_quantity;
         setDate();
         updateStock();
         this.customerId = customerId;
-        saleId = generateSaleId();
         Data.sales.add(new SalesReport(saleId,customerId,getSubtotal(),getTax(),
                 getTotal(),getCostExpenditure(),getProfit(),getDate()));
         Receipt receipt = new Receipt(this);
-    }
-
-    /**
-     * generates a saleId, and increments the static variable saleCount by one.
-     * @return saleId, should be unique of other saleIds
-     */
-    private int generateSaleId() {
-        saleId = saleCount;
-        saleCount++;
-        return saleId;
     }
 
     /**
