@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Used for keeping a record of Sales when they occur
+ * Used for keeping a record of Sales
  */
 public class SalesReport implements Comparable<SalesReport>{
 
